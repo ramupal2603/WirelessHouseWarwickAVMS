@@ -11,6 +11,29 @@ import java.util.Locale;
 
 public class DateTimeUtils {
 
+    public static String getCurrentDateHeader() {
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = df.format(c.getTime());
+
+        String inputPattern = "dd/MM/yyyy";
+        String outputPattern = "yyyy-MM-dd";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(formattedDate);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
+
     public static String getCurrentDate(Context context,String pattern) {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat(pattern);

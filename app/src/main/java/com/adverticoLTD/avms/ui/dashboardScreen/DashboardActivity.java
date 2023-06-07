@@ -31,6 +31,7 @@ import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeRequestParamModel;
 import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseDataModel;
 import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.keyLogSolution.ui.welcomeScreen.WelcomeActivity;
@@ -138,7 +139,8 @@ public class DashboardActivity extends BaseActivity {
         showProgressBar();
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.scanQrCode(getScanQrCodeRequest(scannedID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
+        apiService.scanQrCode(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getScanQrCodeRequest(scannedID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
             @Override
             public void onResponse(Call<ScanQrCodeResponseModel> call, Response<ScanQrCodeResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -189,6 +191,15 @@ public class DashboardActivity extends BaseActivity {
 
 
                     }
+                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    scanQrCode(scannedID);
+
                 }
                 hideProgressBar();
             }

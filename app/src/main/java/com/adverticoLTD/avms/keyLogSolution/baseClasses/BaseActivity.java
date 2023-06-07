@@ -19,10 +19,13 @@ import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseMod
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerRequestModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerRequestParamModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.helpers.DateTimeUtils;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.keyLogSolution.customClasses.ProgressLoader;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.network.utils.WebApiHelper;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 
@@ -64,7 +67,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     private void getDisclaimerMessage() {
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.getDisclaimerMessage(getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
+        apiService.getDisclaimerMessage(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(),getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
             @Override
             public void onResponse(Call<DisclaimerMessageResponseModel> call, Response<DisclaimerMessageResponseModel> response) {
                 if (response.isSuccessful()) {

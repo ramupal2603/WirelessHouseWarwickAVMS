@@ -35,12 +35,15 @@ import com.adverticoLTD.avms.data.stafflist.StaffListRequestParamModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListResponseDataModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.helpers.DateTimeUtils;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.helpers.StringUtils;
 import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.ui.Utils;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 
@@ -107,11 +110,11 @@ public class NormalVisitorScreen extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        if (view == loutCompanyView || view==edtCompany) {
+        if (view == loutCompanyView || view == edtCompany) {
             getCompaniesList();
         }
 
-        if (view == loutStaffView || view==edtStaff) {
+        if (view == loutStaffView || view == edtStaff) {
             if (!selectedCompanyID.equals("-1")) {
                 getStaffList();
             } else {
@@ -190,7 +193,8 @@ public class NormalVisitorScreen extends BaseActivity {
     private void callInsertNormalVisitor() {
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.insertNormalVisitor(getNormalVisitorRequestData()).enqueue(new Callback<NormalVisitorResponseModel>() {
+        apiService.insertNormalVisitor(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getNormalVisitorRequestData()).enqueue(new Callback<NormalVisitorResponseModel>() {
             @Override
             public void onResponse(Call<NormalVisitorResponseModel> call, Response<NormalVisitorResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -205,7 +209,7 @@ public class NormalVisitorScreen extends BaseActivity {
                                 responseModel.getData().getVisitor_organization(),
                                 responseModel.getData().getStaff_name(),
                                 responseModel.getData().getCompany_name(), isRegularVisitor, false,
-                                qrCodeImage,false);
+                                qrCodeImage, false);
 
                         String bitmapString = Utils.BitMapToString(badgeImage);
 
@@ -227,6 +231,15 @@ public class NormalVisitorScreen extends BaseActivity {
                     } else {
                         showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in));
                     }
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    callInsertNormalVisitor();
+
                 }
                 hideProgressBar();
             }
@@ -257,7 +270,8 @@ public class NormalVisitorScreen extends BaseActivity {
         showProgressBar();
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.getStaffList(getStaffRequest()).enqueue(new Callback<StaffListResponseModel>() {
+        apiService.getStaffList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getStaffRequest()).enqueue(new Callback<StaffListResponseModel>() {
             @Override
             public void onResponse(Call<StaffListResponseModel> call, Response<StaffListResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -295,16 +309,26 @@ public class NormalVisitorScreen extends BaseActivity {
         showProgressBar();
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.getCompanies().enqueue(new Callback<CompanyListResponseModel>() {
+        apiService.getCompanies(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<CompanyListResponseModel>() {
             @Override
             public void onResponse(Call<CompanyListResponseModel> call, Response<CompanyListResponseModel> response) {
-                if (response != null) {
+                if (response.isSuccessful()) {
                     CompanyListResponseModel responseModel = response.body();
                     if (responseModel != null && responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCESS)) {
                         arrCompaniesList = new ArrayList<>();
                         arrCompaniesList.addAll(responseModel.getData());
                         companyListDialog();
                     }
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getCompaniesList();
+
                 } else {
                     showToastMessage(getString(R.string.error_something_went_wrong));
                 }

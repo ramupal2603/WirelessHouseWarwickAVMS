@@ -23,12 +23,15 @@ import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestMo
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestParamModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.helpers.DateTimeUtils;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.helpers.StringUtils;
 import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.ui.Utils;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -113,7 +116,8 @@ public class ExistingContractorActivity extends BaseActivity {
     private void siginInExistingContractorWithID() {
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.existingContractorSignIn(getExistingContractorRequest()).enqueue(new Callback<ExistingContractorResponseModel>() {
+        apiService.existingContractorSignIn(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(),getExistingContractorRequest()).enqueue(new Callback<ExistingContractorResponseModel>() {
             @Override
             public void onResponse(Call<ExistingContractorResponseModel> call, Response<ExistingContractorResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -146,6 +150,15 @@ public class ExistingContractorActivity extends BaseActivity {
                     } else {
                         showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in_contractor));
                     }
+
+                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    siginInExistingContractorWithID();
 
                 }
                 hideProgressBar();

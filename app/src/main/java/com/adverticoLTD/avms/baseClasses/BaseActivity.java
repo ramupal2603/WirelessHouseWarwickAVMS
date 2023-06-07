@@ -18,7 +18,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +29,7 @@ import com.adverticoLTD.avms.BuildConfig;
 import com.adverticoLTD.avms.MyApplication;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.customClasses.ProgressLoader;
+import com.adverticoLTD.avms.data.acesstoken.AccessTokenResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseDataModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerRequestModel;
@@ -41,18 +41,19 @@ import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.DimensionUtils;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.network.utils.WebApiHelper;
 import com.adverticoLTD.avms.ui.Utils;
-import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -124,6 +125,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         showTime();
 
+        getAccessKeyToken();
+
         if (marqueeMessage.isEmpty()) {
             getDisclaimerMessage();
         } else {
@@ -131,9 +134,38 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+
+    public void getAccessKeyToken() {
+        RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
+        apiService.getTokenAccesskey(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<AccessTokenResponseModel>() {
+            @Override
+            public void onResponse(Call<AccessTokenResponseModel> call, Response<AccessTokenResponseModel> response) {
+                if (response != null) {
+                    AccessTokenResponseModel responseModel = response.body();
+                    if (responseModel != null && responseModel.getStatus().toString().equals(ConstantClass.RESPONSE_SUCCESS)) {
+
+                        Prefs.putString(PreferenceKeys.PREF_ACCESS_TOKEN, responseModel.getData().getApiTokenKey());
+
+                    }
+                } else {
+                    showToastMessage(getString(R.string.error_something_went_wrong));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AccessTokenResponseModel> call, Throwable t) {
+                t.printStackTrace();
+                showToastMessage(getString(R.string.error_something_went_wrong));
+            }
+        });
+
+    }
+
     private void getDisclaimerMessage() {
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.getDisclaimerMessage(getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
+        apiService.getDisclaimerMessage(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(),getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
             @Override
             public void onResponse(Call<DisclaimerMessageResponseModel> call, Response<DisclaimerMessageResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -211,7 +243,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     private void initCommonView() {
 
         if (txtDate != null) {
-            txtDate.setText(DateTimeUtils.getCurrentDate(getApplicationContext(),"EEE, dd MMM yyyy"));
+            txtDate.setText(DateTimeUtils.getCurrentDate(getApplicationContext(), "EEE, dd MMM yyyy"));
         }
 
     }
@@ -478,7 +510,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         showProgressBar();
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.scanQrCode(getScanQrCodeRequest(scannedID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
+        apiService.scanQrCode(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(),getScanQrCodeRequest(scannedID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
             @Override
             public void onResponse(Call<ScanQrCodeResponseModel> call, Response<ScanQrCodeResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -534,6 +567,15 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
 
                     }
+                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    scanQrCodeForSignOut(scannedID);
+
                 }
                 hideProgressBar();
             }

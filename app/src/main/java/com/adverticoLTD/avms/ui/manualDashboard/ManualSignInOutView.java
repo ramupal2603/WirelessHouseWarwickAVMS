@@ -16,8 +16,11 @@ import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordsDataModel;
 import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordsParamModel;
 import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordsRequestModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.helpers.DateTimeUtils;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 
@@ -74,7 +77,8 @@ public class ManualSignInOutView extends BaseActivity {
         showProgressBar();
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.getSignedInRecords(getRequestModel(userType)).enqueue(new Callback<SignedInRecordResponseModel>() {
+        apiService.getSignedInRecords(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getRequestModel(userType)).enqueue(new Callback<SignedInRecordResponseModel>() {
             @Override
             public void onResponse(Call<SignedInRecordResponseModel> call, Response<SignedInRecordResponseModel> response) {
                 hideProgressBar();
