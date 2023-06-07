@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image_inner"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+
+    <include layout="@layout/layout_common_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/largeMargin"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_marginRight="@dimen/largeMargin"
+        android:layout_weight="0.70"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edtTextHeight">
+
+            <LinearLayout
+                android:id="@+id/loutSignKeyOut"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_sign_out_border_color"
+                    android:gravity="center"
+                    android:text="Sign Key Out"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="42sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/loutSignKeyIn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/common_margin"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_sign_out_border_color"
+                    android:gravity="center"
+                    android:text="Sign Key In"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="42sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin">
+
+            <LinearLayout
+                android:id="@+id/backLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/common_margin"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="@dimen/common_margin">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="wrap_content"
+                    android:tint="@color/colorTheme"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back_btn" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_common_footer" />
+
+</LinearLayout>

@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image_home_screen"
+    android:gravity="top|center"
+    android:orientation="vertical"
+    android:padding="@dimen/common_margin"
+    tools:context=".keyLogSolution.ui.welcomeScreen.WelcomeActivity"
+    tools:ignore="MissingDefaultResource">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/space_10"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_heights"
+                            android:layout_marginTop="@dimen/common_margin">
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/space_20"
+                                android:layout_weight="1"
+                                android:background="@drawable/edt_background">
+
+                                <EditText
+                                    android:id="@+id/edtFirstName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:hint="Firstname"
+                                    android:inputType="textCapSentences|text"
+                                    android:paddingLeft="@dimen/largeMargin"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="@dimen/normalTextSize" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/view_heights"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
+
+
+                                    <EditText
+                                        android:id="@+id/edtSurname"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@android:color/transparent"
+                                        android:gravity="center_vertical"
+                                        android:hint="Surname"
+                                        android:inputType="textCapSentences|text"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="@dimen/normalTextSize" />
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_heights"
+                            android:layout_marginTop="@dimen/common_margin"
+                            >
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/space_20"
+                                android:layout_weight="1"
+                                android:background="@drawable/edt_background">
+
+                                <EditText
+                                    android:id="@+id/edtCompany"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center_vertical"
+                                    android:hint="Company"
+                                    android:paddingLeft="@dimen/largeMargin"
+                                    android:textColor="@color/colorBlack"
+                                    android:inputType="textCapSentences|text"
+                                    android:textSize="@dimen/normalTextSize" />
+
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/view_heights"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
+
+                                    <EditText
+                                        android:id="@+id/edtMobile"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:background="@android:color/transparent"
+                                        android:gravity="center_vertical"
+                                        android:hint="Mobile no"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:textColor="@color/colorBlack"
+                                        android:imeOptions="actionDone"
+                                        android:inputType="phone"
+                                        android:textSize="@dimen/normalTextSize" />
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="@dimen/common_margin"
+                            android:layout_height="@dimen/view_heights">
+
+
+                            <RelativeLayout
+
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/view_heights"
+                                android:layout_weight="1"
+                                android:layout_marginRight="@dimen/space_20"
+                                android:background="@drawable/edt_background">
+
+
+                                <com.adverticoLTD.avms.customClasses.FontsTextView
+                                    android:id="@+id/txtSignature"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="@dimen/largeMargin"
+                                    android:text="Signature"
+                                    android:textColor="@color/darkGrayColor"
+                                    android:textSize="@dimen/normalTextSize" />
+
+
+                                <ImageView
+                                    android:id="@+id/imgSignature"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:padding="10dp" />
+
+
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:id="@+id/loutKeyRefView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.7"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtSelectedKey"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:textColor="@color/darkGrayColor"
+                                        android:text="Key REF"
+                                        android:textSize="@dimen/normalTextSize" />
+
+                                    <View
+                                        android:layout_width="1dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="@dimen/common_margin"
+                                        android:background="@color/colorBlack" />
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="@dimen/common_margin"
+                                        android:src="@drawable/ic_arrow_drop_down_96dp"
+                                        android:tint="@color/colorBlack" />
+
+                                </LinearLayout>
+
+
+
+                                <com.adverticoLTD.avms.customClasses.FontsTextView
+                                    android:id="@+id/next"
+                                    android:layout_width="0dp"
+                                    android:gravity="center"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_height="match_parent"
+                                    android:textColor="@color/colorWhite"
+                                    android:background="@drawable/txt_round_corner_bg"
+                                    android:visibility="gone"
+                                    android:text="@string/next"
+                                    android:layout_weight="0.3"
+                                    android:textSize="@dimen/largeTextSize" />
+
+
+                            </LinearLayout>
+
+
+
+
+
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_heights"
+                            android:layout_marginTop="@dimen/common_margin"
+                            android:layout_marginBottom="@dimen/common_margin">
+
+
+                            <LinearLayout
+                                android:id="@+id/loutStaffView"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_marginRight="@dimen/space_20"
+                                android:layout_weight="1"
+                                android:background="@drawable/edt_background">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtOfficeUseTitle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginRight="40dp"
+                                        android:text="For office use only"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="24sp" />
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:orientation="horizontal"
+                                        android:layout_below="@+id/txtOfficeUseTitle"
+                                        android:layout_height="match_parent">
+
+                                        <com.adverticoLTD.avms.customClasses.FontsTextView
+                                            android:id="@+id/txtStaffName"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:paddingLeft="@dimen/largeMargin"
+                                            android:text="Authorised by"
+                                            android:textColor="@color/darkGrayColor"
+                                            android:textSize="@dimen/normalTextSize" />
+
+                                        <View
+                                            android:layout_width="1dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="@dimen/common_margin"
+                                            android:background="@color/colorBlack" />
+
+                                        <ImageView
+                                            android:layout_width="45dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_margin="@dimen/common_margin"
+                                            android:src="@drawable/ic_arrow_drop_down_96dp"
+                                            android:tint="@color/colorBlack" />
+
+                                    </LinearLayout>
+
+
+                                </RelativeLayout>
+
+
+
+
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/loutStaffSignatureView"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/view_heights"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtOfficeTitle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginRight="40dp"
+                                        android:text="For office use only"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="24sp" />
+
+                                    <ImageView
+                                        android:id="@+id/imgStaffSignature"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_below="@+id/txtOfficeTitle"
+                                        android:padding="10dp" />
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtStaffSignature"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:text="Staff Signature"
+                                        android:textColor="@color/darkGrayColor"
+                                        android:textSize="@dimen/normalTextSize" />
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <RelativeLayout
+                            android:id="@+id/loutBtnView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_10"
+                            android:layout_marginRight="40dp"
+                            android:gravity="end">
+
+
+                            <LinearLayout
+                                android:id="@+id/backLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_10"
+                                android:backgroundTint="@color/colorTheme"
+                                android:layout_marginLeft="@dimen/space_20"
+                                android:background="@drawable/backbtn"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/space_10"/>
+
+
+
+
+                            <LinearLayout
+                                android:id="@+id/loutSignatureSignOutKey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/signout_button_large"
+                                android:orientation="horizontal" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

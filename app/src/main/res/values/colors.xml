@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="border_color">#00A4C1</color>
+    <color name="badge_line_color">#666666</color>
+    <color name="camera_activity_bg">@color/border_color</color>
+    <color name="lightGrayColor">#D3D3D3</color>
+    <color name="whiteColor">#fff</color>
+    <color name="darkGrayColor">#919191</color>
+    <color name="colorTheme">#00A4FF</color>
+    <color name="colorBlue">#2A3674</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorGray">#CBCBCB</color>
+    <color name="colorBorder">#0D6E85</color>
+    <color name="colorDarkGray">#696969</color>
+    <color name="colorSearchCancel">#3F51B5</color>
+
+    <color name="colorRed">#C70F2E</color>
+    <color name="colorGreen">#3DD749</color>
+    <color name="colorLightGray">#E9E4E4</color>
+    <color name="colorText">#666666</color>
+    <color name="colorPink">#FF017E</color>
+    <color name="colorSignOut">#313759</color>
+
+
+
+</resources>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image_home_screen"
+    android:gravity="top|center"
+    android:orientation="vertical"
+    tools:context=".keyLogSolution.ui.welcomeScreen.WelcomeActivity"
+    tools:ignore="MissingDefaultResource">
+
+
+    <include layout="@layout/layout_common_header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="0.80"
+        android:layout_height="0dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/loutBottomView"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:gravity="top|center"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/common_margin"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_heights"
+                            android:layout_marginTop="@dimen/common_margin">
+
+
+                            <LinearLayout
+                                android:id="@+id/loutKeyRefView"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/space_20"
+                                android:layout_weight="1"
+                                android:background="@drawable/edt_background">
+
+                                <com.adverticoLTD.avms.customClasses.FontsTextView
+                                    android:id="@+id/txtSelectedKey"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="@dimen/largeMargin"
+                                    android:text="Key REF"
+                                    android:textColorHint="@color/darkGrayColor"
+                                    android:textSize="@dimen/normalTextSize" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/common_margin"
+                                    android:background="@color/colorBlack" />
+
+                                <ImageView
+                                    android:layout_width="45dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/common_margin"
+                                    android:src="@drawable/ic_arrow_drop_down_96dp"
+                                    android:tint="@color/colorBlack" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+
+                                <RelativeLayout
+                                    android:id="@+id/loutSignatureView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/view_heights"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
+
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtSignature"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:text="Signature"
+                                        android:textColor="@color/darkGrayColor"
+                                        android:textSize="@dimen/normalTextSize" />
+
+
+                                    <ImageView
+                                        android:id="@+id/imgSignature"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:padding="10dp" />
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_heights"
+                            android:layout_marginTop="@dimen/common_margin"
+                            android:layout_marginBottom="@dimen/common_margin">
+
+
+                            <LinearLayout
+                                android:id="@+id/loutStaffView"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/space_20"
+                                android:layout_weight="1"
+                                android:background="@drawable/edt_background">
+
+                                <com.adverticoLTD.avms.customClasses.FontsTextView
+                                    android:id="@+id/txtStaffName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:paddingLeft="@dimen/largeMargin"
+                                    android:text="Authorised by"
+                                    android:textColorHint="@color/darkGrayColor"
+                                    android:textSize="@dimen/normalTextSize" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/common_margin"
+                                    android:background="@color/colorBlack" />
+
+                                <ImageView
+                                    android:layout_width="45dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/common_margin"
+                                    android:src="@drawable/ic_arrow_drop_down_96dp"
+                                    android:tint="@color/colorBlack" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/view_heights"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtOfficeTitle"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentRight="true"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginRight="40dp"
+                                        android:text="For office use only"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="24sp" />
+
+                                    <ImageView
+                                        android:id="@+id/imgStaffSignature"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_below="@+id/txtOfficeTitle"
+                                        android:padding="10dp" />
+
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtStaffSignature"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:text="Staff Signature"
+                                        android:textColor="@color/darkGrayColor"
+                                        android:textSize="@dimen/normalTextSize" />
+
+
+                                </RelativeLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <RelativeLayout
+                            android:id="@+id/loutBtnView"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/view_heights"
+                            android:layout_marginTop="@dimen/common_margin"
+                            android:layout_marginRight="40dp"
+                            android:gravity="end">
+
+                            <LinearLayout
+                                android:id="@+id/backLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_10"
+                                android:layout_marginLeft="@dimen/space_20"
+                                android:backgroundTint="@color/colorTheme"
+                                android:background="@drawable/backbtn"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentLeft="true"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/space_10"/>
+
+
+                            <LinearLayout
+                                android:id="@+id/loutSignInView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/space_120"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/signin_button_large"
+                                android:orientation="horizontal" />
+
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/loutBottomView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

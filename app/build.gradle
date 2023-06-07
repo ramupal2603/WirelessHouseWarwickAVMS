@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+
+def config = rootProject.extensions.getByName("ext") // Create variable to access "ext"
+
+android {
+    compileSdkVersion 31
+    defaultConfig {
+        applicationId "com.bruntwoodCityCenter.avms"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "allowBadgePrint", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "allowBadgePrint", "true"
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation files('libs/AndroidAudio.jar')
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit-converters:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:retrofit-adapters:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+
+    //Material Dialog
+//    implementation 'com.github.rey5137:material:1.3.1'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+
+    //Background Job
+    implementation 'com.birbit:android-priority-jobqueue:3.0.0'
+    implementation 'com.firebase:firebase-jobdispatcher-with-gcm-dep:0.6.0'
+
+    //Barcode Scanner View
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
+
+
+    //Glide
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //Signature
+    implementation 'com.github.gcacace:signature-pad:1.2.1'
+
+    //EasyPref
+    implementation 'com.pixplicity.easyprefs:library:1.9.0'
+
+    ///Firebase
+//    implementation 'com.google.firebase:firebase-messaging:23.0.0'
+
+    //FilePicker
+    implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.8'
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //Dimension
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+    // For WorkManager.
+    implementation 'android.arch.work:work-runtime:1.0.1'
+
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation project(":BrotherPrintLibrary")
+
+
+}
+//apply plugin: 'com.google.gms.google-services'
