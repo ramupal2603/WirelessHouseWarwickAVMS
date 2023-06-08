@@ -231,7 +231,8 @@ public class NormalVisitorScreen extends BaseActivity {
                     } else {
                         showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in));
                     }
-                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
                     getAccessKeyToken();
                     try {
                         Thread.sleep(3000);
@@ -281,6 +282,16 @@ public class NormalVisitorScreen extends BaseActivity {
                         arrStaffList.addAll(responseModel.getData());
                         staffListDialog();
                     }
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getStaffList();
+
                 } else {
                     showToastMessage(getString(R.string.error_something_went_wrong));
                 }
@@ -320,7 +331,8 @@ public class NormalVisitorScreen extends BaseActivity {
                         arrCompaniesList.addAll(responseModel.getData());
                         companyListDialog();
                     }
-                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
                     getAccessKeyToken();
                     try {
                         Thread.sleep(3000);

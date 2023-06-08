@@ -141,15 +141,19 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                 DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<AccessTokenResponseModel>() {
             @Override
             public void onResponse(Call<AccessTokenResponseModel> call, Response<AccessTokenResponseModel> response) {
-                if (response != null) {
+                if (response.isSuccessful()) {
                     AccessTokenResponseModel responseModel = response.body();
                     if (responseModel != null && responseModel.getStatus().toString().equals(ConstantClass.RESPONSE_SUCCESS)) {
 
                         Prefs.putString(PreferenceKeys.PREF_ACCESS_TOKEN, responseModel.getData().getApiTokenKey());
 
                     }
-                } else {
-                    showToastMessage(getString(R.string.error_something_went_wrong));
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+
+                    Prefs.putString(PreferenceKeys.PREF_ACCESS_TOKEN, "");
+                    getAccessKeyToken();
+
                 }
             }
 
@@ -165,7 +169,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     private void getDisclaimerMessage() {
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.getDisclaimerMessage(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
             @Override
             public void onResponse(Call<DisclaimerMessageResponseModel> call, Response<DisclaimerMessageResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -178,7 +182,19 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                         }
                     }
 
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getDisclaimerMessage();
+
                 }
+
             }
 
             @Override
@@ -511,7 +527,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.scanQrCode(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getScanQrCodeRequest(scannedID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getScanQrCodeRequest(scannedID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
             @Override
             public void onResponse(Call<ScanQrCodeResponseModel> call, Response<ScanQrCodeResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -567,7 +583,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
 
                     }
-                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
                     getAccessKeyToken();
                     try {
                         Thread.sleep(3000);

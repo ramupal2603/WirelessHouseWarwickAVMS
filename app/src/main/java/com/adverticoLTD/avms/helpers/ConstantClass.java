@@ -4,7 +4,8 @@ import android.os.Bundle;
 
 public class ConstantClass {
 
-    public static final int RESPONSE_UNAUTHORIZED = 403;
+    public static final int RESPONSE_UNAUTHORIZED_FOR = 403;
+    public static final int RESPONSE_UNAUTHORIZED = 401;
     public static final String RESPONSE_SUCCESS = "1";
     public static final String RESPONSE_SUCCESS_SIGN_IN = "1";
     public static final String RESPONSE_SUCCESS_SIGN_OUT = "2";

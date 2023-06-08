@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.adverticoLTD.avms.R;
+import com.adverticoLTD.avms.data.acesstoken.AccessTokenResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseDataModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerRequestModel;
@@ -47,9 +48,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @BindView(R.id.txtMarquee)
     TextView txtMarquee;
 
-    String disclaimerMessage="";
-    String marqueeMessage="";
-
+    String disclaimerMessage = "";
+    String marqueeMessage = "";
 
 
     @Override
@@ -58,6 +58,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         setContentView(getLayoutResource());
         unbinder = ButterKnife.bind(this);
 
+        getAccessKeyToken();
+
         if (marqueeMessage.isEmpty()) {
             getDisclaimerMessage();
         } else {
@@ -65,10 +67,41 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    public void getAccessKeyToken() {
+        RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
+        apiService.getTokenAccesskey(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<AccessTokenResponseModel>() {
+            @Override
+            public void onResponse(Call<AccessTokenResponseModel> call, Response<AccessTokenResponseModel> response) {
+                if (response.isSuccessful()) {
+                    AccessTokenResponseModel responseModel = response.body();
+                    if (responseModel != null && responseModel.getStatus().toString().equals(ConstantClass.RESPONSE_SUCCESS)) {
+
+                        Prefs.putString(PreferenceKeys.PREF_ACCESS_TOKEN, responseModel.getData().getApiTokenKey());
+
+                    }
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+
+                    Prefs.putString(PreferenceKeys.PREF_ACCESS_TOKEN, "");
+                    getAccessKeyToken();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AccessTokenResponseModel> call, Throwable t) {
+                t.printStackTrace();
+                showToastMessage(getString(R.string.error_something_went_wrong));
+            }
+        });
+
+    }
+
     private void getDisclaimerMessage() {
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.getDisclaimerMessage(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getDisclaimerRequest()).enqueue(new Callback<DisclaimerMessageResponseModel>() {
             @Override
             public void onResponse(Call<DisclaimerMessageResponseModel> call, Response<DisclaimerMessageResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -81,7 +114,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                         }
                     }
 
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getDisclaimerMessage();
+
                 }
+
             }
 
             @Override

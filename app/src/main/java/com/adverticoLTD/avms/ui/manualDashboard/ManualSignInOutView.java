@@ -96,6 +96,16 @@ public class ManualSignInOutView extends BaseActivity {
                         showErrorMessage();
                     }
 
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getVisitorRecords(userType);
+
                 } else {
                     showErrorMessage();
                 }

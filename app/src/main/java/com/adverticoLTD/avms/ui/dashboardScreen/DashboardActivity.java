@@ -191,7 +191,8 @@ public class DashboardActivity extends BaseActivity {
 
 
                     }
-                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
                     getAccessKeyToken();
                     try {
                         Thread.sleep(3000);

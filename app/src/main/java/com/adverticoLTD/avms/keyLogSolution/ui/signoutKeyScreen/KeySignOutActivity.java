@@ -23,6 +23,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.adverticoLTD.avms.R;
+import com.adverticoLTD.avms.helpers.DateTimeUtils;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseDataModel;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseModel;
@@ -39,6 +41,7 @@ import com.adverticoLTD.avms.keyLogSolution.network.utils.UploadImageHelpers;
 import com.adverticoLTD.avms.keyLogSolution.ui.Utils;
 import com.adverticoLTD.avms.keyLogSolution.ui.signatureView.SignatureViewActivity;
 import com.adverticoLTD.avms.keyLogSolution.ui.thankyouScreen.ThankYouActivity;
+import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -173,7 +176,8 @@ public class KeySignOutActivity extends BaseActivity {
         showProgressBar();
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
-        Call<StaffListResponseModel> call = apiService.getStaffList();
+        Call<StaffListResponseModel> call = apiService.getStaffList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader());
         call.enqueue(new Callback<StaffListResponseModel>() {
             @Override
             public void onResponse(Call<StaffListResponseModel> call, Response<StaffListResponseModel> response) {
@@ -192,6 +196,16 @@ public class KeySignOutActivity extends BaseActivity {
 
 
                     }
+                } else if (response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getStaffListData();
+
                 } else {
                     showToastMessage("Something went wrong");
                 }
@@ -280,7 +294,8 @@ public class KeySignOutActivity extends BaseActivity {
         showProgressBar();
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
-        Call<KeyResponseModel> call = apiService.getKeyList();
+        Call<KeyResponseModel> call = apiService.getKeyList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader());
         call.enqueue(new Callback<KeyResponseModel>() {
             @Override
             public void onResponse(Call<KeyResponseModel> call, Response<KeyResponseModel> response) {
@@ -297,6 +312,16 @@ public class KeySignOutActivity extends BaseActivity {
                             showToastMessage("No key ref found");
                         }
                     }
+                } else if (response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    getKeyRefData();
+
                 } else {
                     showToastMessage(getResources().getString(R.string.response_error_msg));
                 }
@@ -500,6 +525,16 @@ public class KeySignOutActivity extends BaseActivity {
                                     edtMobile.getText().toString().trim());
                         }
                     }
+                } else if (response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    uploadfile(signature, fileNo);
+
                 } else {
                     showToastMessage(getResources().getString(R.string.response_error_msg));
                 }
@@ -519,7 +554,8 @@ public class KeySignOutActivity extends BaseActivity {
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
         Call<KeySignOutResponseModel> call =
-                apiService.keySignout(getKeySignOutRequestModel(firstName, surname, company, mobileNo));
+                apiService.keySignout(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                        DateTimeUtils.getCurrentDateHeader(), getKeySignOutRequestModel(firstName, surname, company, mobileNo));
 
         call.enqueue(new Callback<KeySignOutResponseModel>() {
             @Override
@@ -532,6 +568,16 @@ public class KeySignOutActivity extends BaseActivity {
                     if (responseModel != null && responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCES)) {
                         launchThankYouPage();
                     }
+                } else if (response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    signOutKey(firstName, surname, company, mobileNo);
+
                 } else {
                     showToastMessage(getResources().getString(R.string.response_error_msg));
                 }
