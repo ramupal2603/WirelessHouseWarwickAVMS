@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,10 +22,10 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:visibility="invisible"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_weight="0.60"
             android:orientation="vertical"
+            android:visibility="invisible"
             tools:ignore="NestedWeights">
 
             <com.adverticoLTD.avms.customClasses.FontsTextView
@@ -75,20 +76,21 @@
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
-                        android:text="@string/home"
+                        android:layout_weight="1"
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
-                        android:textColor="@color/whiteColor"
+                        android:text="@string/home"
+                        android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_buttons_arrow"
                         android:layout_marginRight="@dimen/largeMargin"
-                        android:layout_height="@dimen/_10sdp"/>
+                        android:src="@drawable/ic_buttons_arrow"
+                        app:tint="@color/colorDarkGray" />
 
                 </LinearLayout>
 
@@ -101,20 +103,21 @@
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
-                        android:layout_weight="1"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/visitor"
-                        android:textColor="@color/whiteColor"
+                        android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_buttons_arrow"
                         android:layout_marginRight="@dimen/largeMargin"
-                        android:layout_height="@dimen/_10sdp"/>
+                        android:src="@drawable/ic_buttons_arrow"
+                        app:tint="@color/colorDarkGray" />
 
                 </LinearLayout>
 
@@ -128,19 +131,20 @@
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center|start"
                         android:layout_weight="1"
+                        android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/contractor"
-                        android:textColor="@color/whiteColor"
+                        android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_buttons_arrow"
                         android:layout_marginRight="@dimen/largeMargin"
-                        android:layout_height="@dimen/_10sdp"/>
+                        android:src="@drawable/ic_buttons_arrow"
+                        app:tint="@color/colorDarkGray" />
 
                 </LinearLayout>
 
@@ -159,15 +163,16 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Keys"
-                        android:textColor="@color/whiteColor"
+                        android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_buttons_arrow"
                         android:layout_marginRight="@dimen/largeMargin"
-                        android:layout_height="@dimen/_10sdp"/>
+                        android:src="@drawable/ic_buttons_arrow"
+                        app:tint="@color/colorDarkGray" />
 
                 </LinearLayout>
 
@@ -176,16 +181,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
                     android:layout_marginTop="@dimen/small_margin"
-                    android:background="@drawable/btn_theme_border_color"
-                    android:visibility="gone">
+                    android:background="@drawable/btn_sign_out_border_color"
+                    android:visibility="visible">
 
-                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                    <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/sign_out"
-                        android:textColor="@color/colorBlack"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/regularTextSize" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/largeMargin"
+                        android:src="@drawable/ic_buttons_arrow"
+                        app:tint="@color/whiteColor" />
+
 
                 </LinearLayout>
 
