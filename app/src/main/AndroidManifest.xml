@@ -121,6 +121,13 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name="com.adverticoLTD.avms.ui.deliveries.DeliveriesActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
 
         <activity
             android:name=".keyLogSolution.ui.welcomeScreen.WelcomeActivity"

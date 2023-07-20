@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="0.70"
+        android:layout_weight="0.80"
         android:orientation="horizontal">
 
 
@@ -65,12 +65,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:weightSum="4">
+                android:weightSum="6">
 
                 <LinearLayout
                     android:id="@+id/loutHomeScreen"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="75dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:background="@drawable/btn_theme_border_color">
 
@@ -97,7 +97,7 @@
                 <LinearLayout
                     android:id="@+id/loutVisitorScreen"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="75dp"
                     android:layout_marginTop="@dimen/small_margin"
                     android:background="@drawable/btn_theme_border_color">
 
@@ -124,7 +124,7 @@
                 <LinearLayout
                     android:id="@+id/loutContractorScreen"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="75dp"
                     android:layout_marginTop="@dimen/small_margin"
                     android:background="@drawable/btn_theme_border_color">
 
@@ -151,7 +151,7 @@
                 <LinearLayout
                     android:id="@+id/loutKeyLog"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="75dp"
                     android:layout_marginTop="@dimen/small_margin"
                     android:background="@drawable/btn_theme_border_color"
                     android:visibility="visible">
@@ -177,9 +177,37 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/loutDeliveries"
+                    android:layout_width="match_parent"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:background="@drawable/btn_theme_border_color"
+                    android:visibility="visible">
+
+                    <com.adverticoLTD.avms.customClasses.FontTextViewBold
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center|start"
+                        android:paddingLeft="@dimen/largeMargin"
+                        android:text="Deliveries"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/regularTextSize" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/largeMargin"
+                        android:src="@drawable/ic_buttons_arrow"
+                        app:tint="@color/colorDarkGray" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/loutSignOut"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="75dp"
                     android:layout_marginTop="@dimen/small_margin"
                     android:background="@drawable/btn_sign_out_border_color"
                     android:visibility="visible">

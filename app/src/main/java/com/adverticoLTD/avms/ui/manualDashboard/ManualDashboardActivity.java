@@ -13,6 +13,7 @@ import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.keyLogSolution.ui.welcomeScreen.WelcomeActivity;
 import com.adverticoLTD.avms.ui.contractorView.contractorTypeScreen.ContractorTypeActivity;
 import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
+import com.adverticoLTD.avms.ui.deliveries.DeliveriesActivity;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
 import com.adverticoLTD.avms.ui.userSelection.UserTypeActivity;
 
@@ -35,6 +36,9 @@ public class ManualDashboardActivity extends BaseActivity {
     @BindView(R.id.loutSignOut)
     LinearLayout loutSignOut;
 
+    @BindView(R.id.loutDeliveries)
+    LinearLayout loutDeliveries;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,7 @@ public class ManualDashboardActivity extends BaseActivity {
         loutContractorScreen.setOnClickListener(this::onClick);
         loutKeyLog.setOnClickListener(this::onClick);
         loutSignOut.setOnClickListener(this::onClick);
+        loutDeliveries.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -72,6 +77,10 @@ public class ManualDashboardActivity extends BaseActivity {
         if (view == loutSignOut) {
             Intent intent = new Intent(ManualDashboardActivity.this, UserTypeActivity.class);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
+        }
+        if (view == loutDeliveries) {
+            Intent intent = new Intent(ManualDashboardActivity.this, DeliveriesActivity.class);
+            startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_VISITOR);
         }
     }
 
