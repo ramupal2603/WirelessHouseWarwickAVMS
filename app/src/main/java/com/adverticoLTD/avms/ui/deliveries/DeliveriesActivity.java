@@ -1,6 +1,8 @@
 package com.adverticoLTD.avms.ui.deliveries;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -19,10 +21,16 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.adverticoLTD.avms.BuildConfig;
+import com.adverticoLTD.avms.MyApplication;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.data.companies.CompanyListDataModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
+import com.adverticoLTD.avms.data.delivery.DeliveryParamModel;
+import com.adverticoLTD.avms.data.delivery.DeliveryRequestModel;
+import com.adverticoLTD.avms.data.delivery.DeliveryResponseModel;
+import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorResponseModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListRequestModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListRequestParamModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListResponseDataModel;
@@ -30,9 +38,12 @@ import com.adverticoLTD.avms.data.stafflist.StaffListResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
+import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
+import com.adverticoLTD.avms.ui.Utils;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
+import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
@@ -126,7 +137,7 @@ public class DeliveriesActivity extends BaseActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                validateNormalVisitorSignIn();
+                callSendDeliveryEmailAddress();
                 dialog.dismiss();
             }
         });
@@ -368,6 +379,61 @@ public class DeliveriesActivity extends BaseActivity {
 
     }
 
+
+    private void callSendDeliveryEmailAddress() {
+        showProgressBar();
+        RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
+        apiService.sendDeliveryEmail(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getDeliveryEmailRequestModel()).enqueue(new Callback<DeliveryResponseModel>() {
+            @Override
+            public void onResponse(Call<DeliveryResponseModel> call, Response<DeliveryResponseModel> response) {
+                if (response.isSuccessful()) {
+                    DeliveryResponseModel responseModel = response.body();
+                    if (responseModel != null && responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCESS)) {
+
+                        Intent intent = new Intent(DeliveriesActivity.this, ThankYouScreen.class);
+                        intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, "");
+                        intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
+                        startActivity(intent);
+                        setResult(RESULT_OK);
+                        finish();
+
+                    } else {
+                        showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in));
+                    }
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    callSendDeliveryEmailAddress();
+
+                }
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(Call<DeliveryResponseModel> call, Throwable t) {
+                t.printStackTrace();
+                hideProgressBar();
+            }
+        });
+    }
+
+    private DeliveryRequestModel getDeliveryEmailRequestModel() {
+
+        DeliveryRequestModel deliveryRequestModel = new DeliveryRequestModel();
+
+        DeliveryParamModel deliveryParamModel = new DeliveryParamModel();
+        deliveryParamModel.setCompany_id(selectedCompanyID);
+        deliveryParamModel.setStaff_id(selectedStaffID);
+        deliveryRequestModel.setParam(deliveryParamModel);
+
+        return deliveryRequestModel;
+    }
 
 
 }

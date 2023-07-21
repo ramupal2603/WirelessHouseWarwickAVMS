@@ -12,6 +12,7 @@ public class WebApiHelper {
     public static final String signInUser = "signinUser";
     public static final String getSignedInRecords = "getSigninrecords";
     public static final String getTokenAccesskey = "getAccesskey";
+    public static final String sendDeliveryEmail = "sendDeliveryemail";
 
     // Device Type
     public static final String DEVICE_TYPE_TAB = "1";

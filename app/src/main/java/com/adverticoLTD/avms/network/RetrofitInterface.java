@@ -3,12 +3,13 @@ package com.adverticoLTD.avms.network;
 
 import com.adverticoLTD.avms.data.acesstoken.AccessTokenResponseModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
+import com.adverticoLTD.avms.data.delivery.DeliveryRequestModel;
+import com.adverticoLTD.avms.data.delivery.DeliveryResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerRequestModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorResponseModel;
 import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordResponseModel;
-import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordsParamModel;
 import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordsRequestModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorRequestModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorResponseModel;
@@ -73,6 +74,11 @@ public interface RetrofitInterface {
     Call<SignedInRecordResponseModel> getSignedInRecords(@Header("Accesskey") String basicToken,
                                                          @Header("Accesskeydate") String dateTime,
                                                          @Body SignedInRecordsRequestModel requestModel);
+
+    @POST(WebApiHelper.sendDeliveryEmail)
+    Call<DeliveryResponseModel> sendDeliveryEmail(@Header("Accesskey") String basicToken,
+                                                  @Header("Accesskeydate") String dateTime,
+                                                  @Body DeliveryRequestModel requestModel);
 
 
 }
