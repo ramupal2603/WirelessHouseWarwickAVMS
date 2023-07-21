@@ -32,4 +32,5 @@ public class ConstantClass {
     public static final String VISITOR_TYPE = "1";
     public static final String CONTRACTOR_TYPE = "4";
     public static final String EXTRAA_USER_TYPE = "EXTRAA_USER_TYPE";
+    public static final String RESPONSE_DELIVERY_SUCCESS = "3";
 }

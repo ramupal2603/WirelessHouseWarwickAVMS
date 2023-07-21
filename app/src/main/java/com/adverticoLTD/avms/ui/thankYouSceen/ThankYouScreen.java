@@ -37,18 +37,26 @@ public class ThankYouScreen extends BaseActivity {
         String scanStatus = getIntent().getStringExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS);
 
         txtUserName.setText(userName);
-        txtThanksMessage.setText(scanStatus.equals(ConstantClass.RESPONSE_SUCCESS_SIGN_IN)
-                ? getString(R.string.sign_in_message) : getString(R.string.sign_out_message));
+        if (scanStatus.equals(ConstantClass.RESPONSE_DELIVERY_SUCCESS)) {
+            txtThanksMessage.setText("Delivery Email Sent Successfully");
+        } else {
+            txtThanksMessage.setText(scanStatus.equals(ConstantClass.RESPONSE_SUCCESS_SIGN_IN)
+                    ? getString(R.string.sign_in_message) : getString(R.string.sign_out_message));
+        }
+
 
         playVoiceOverMessage(scanStatus);
     }
 
     private void playVoiceOverMessage(String scanStatus) {
+
         if (scanStatus.equals(ConstantClass.RESPONSE_SUCCESS_SIGN_IN)) {
             MusicManager.getInstance().play(ThankYouScreen.this, R.raw.fivesquidjamilsigningin);
-        } else {
+        } else if (scanStatus.equals(ConstantClass.RESPONSE_SUCCESS_SIGN_OUT)) {
             MusicManager.getInstance().play(ThankYouScreen.this, R.raw.fivesquidjamilsigningout);
         }
+
+
     }
 
     private void redirectToDashboard() {

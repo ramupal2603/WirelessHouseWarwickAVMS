@@ -393,7 +393,7 @@ public class DeliveriesActivity extends BaseActivity {
 
                         Intent intent = new Intent(DeliveriesActivity.this, ThankYouScreen.class);
                         intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, "");
-                        intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
+                        intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, ConstantClass.RESPONSE_DELIVERY_SUCCESS);
                         startActivity(intent);
                         setResult(RESULT_OK);
                         finish();
