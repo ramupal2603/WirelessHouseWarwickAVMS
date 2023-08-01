@@ -4,6 +4,15 @@ public class DeliveryParamModel {
 
     String company_id;
     String staff_id;
+    String courier_name;
+
+    public String getCourier_name() {
+        return courier_name;
+    }
+
+    public void setCourier_name(String courier_name) {
+        this.courier_name = courier_name;
+    }
 
     public String getCompany_id() {
         return company_id;

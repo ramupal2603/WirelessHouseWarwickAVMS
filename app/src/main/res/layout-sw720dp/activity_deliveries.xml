@@ -22,19 +22,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <com.adverticoLTD.avms.customClasses.FontTextViewBold
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Delivery for"
-                android:textColor="@color/colorText"
 
-                android:textSize="@dimen/largeTextSize"
-                android:layout_height="wrap_content"/>
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/largeTextSize" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,9 +42,33 @@
 
 
             <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_weight="0.50"
+                android:background="@drawable/edt_background">
+
+                <EditText
+                    android:id="@+id/edtCourierName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/edtTextHeight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Courier Name"
+                    android:inputType="none"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/largeMargin"
+                    android:textSize="@dimen/smallTextSize" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:id="@+id/loutCompanyView"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/edtTextHeight"
+                android:layout_marginLeft="@dimen/common_margin"
                 android:layout_weight="0.50"
                 android:background="@drawable/edt_background">
 
@@ -76,11 +99,18 @@
             </LinearLayout>
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+
             <LinearLayout
                 android:id="@+id/loutStaffView"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/edtTextHeight"
-                android:layout_marginLeft="@dimen/common_margin"
                 android:layout_weight="0.50"
                 android:background="@drawable/edt_background">
 
@@ -106,6 +136,37 @@
                     android:src="@drawable/ic_arrow_drop_down">
 
                 </ImageView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/loutSendDeliveryEmail"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_marginLeft="@dimen/common_margin"
+                android:layout_weight="0.50"
+                android:background="@drawable/btn_sign_out_border_color">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/edtTextHeight"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center|start"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/largeMargin"
+                    android:text="There is a delivery"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/mediumTextSize" />
+
+
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="match_parent"
+                    android:rotation="270"
+                    android:tint="@color/whiteColor"
+                    android:src="@drawable/ic_arrow_drop_down" />
 
             </LinearLayout>
 
@@ -139,7 +200,8 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="invisible">
 
                 <ImageView
                     android:id="@+id/imgSignIn"
