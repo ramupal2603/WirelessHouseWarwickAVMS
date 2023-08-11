@@ -29,8 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Delivery for"
-
-                android:textColor="@color/colorText"
+                android:textColor="@color/whiteColor"
                 android:textSize="@dimen/largeTextSize" />
 
         </LinearLayout>
@@ -54,7 +53,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="Courier Name"
-                    android:inputType="none"
+                    android:inputType="textCapSentences"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
                     android:paddingLeft="@dimen/largeMargin"
@@ -156,7 +155,7 @@
                     android:gravity="center|start"
                     android:maxLines="1"
                     android:paddingLeft="@dimen/largeMargin"
-                    android:text="There is a delivery"
+                    android:text="Send Notification"
                     android:textColor="@color/whiteColor"
                     android:textSize="@dimen/mediumTextSize" />
 
@@ -190,7 +189,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_back_btn"
-                    android:tint="@color/colorTheme" />
+                    />
 
             </LinearLayout>
 

@@ -412,7 +412,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/space_10"
-                                android:backgroundTint="@color/colorTheme"
                                 android:layout_marginLeft="@dimen/space_20"
                                 android:background="@drawable/backbtn"
                                 android:layout_centerVertical="true"

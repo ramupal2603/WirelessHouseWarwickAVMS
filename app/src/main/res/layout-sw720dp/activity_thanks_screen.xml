@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Thank You for signing out the key."
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/headerTextSize" />
 
     <com.adverticoLTD.avms.customClasses.FontsTextView
@@ -24,7 +24,7 @@
         android:gravity="center"
         android:layout_marginTop="@dimen/common_margin"
         android:text="Please ensure the key is signed back in after you have finished."
-        android:textColor="@color/colorText"
+        android:textColor="@color/colorWhite"
         android:textSize="@dimen/normalTextSize" />
 
 </LinearLayout>

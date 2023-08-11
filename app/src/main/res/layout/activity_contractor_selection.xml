@@ -69,7 +69,6 @@
                     android:id="@+id/imgBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tint="@color/colorTheme"
                     android:src="@drawable/ic_back_btn" />
 
             </LinearLayout>
