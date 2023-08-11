@@ -111,7 +111,7 @@ public class DeliveriesActivity extends BaseActivity {
         }
 
         if (view == imgSignIn || view == loutSendDeliveryEmail) {
-            showDisclaimerDialog();
+            validateDeliveriesModule();
         }
 
     }
