@@ -179,8 +179,6 @@ public class NewContractorActivity extends BaseActivity {
             showAlertDialog(getContext(), getString(R.string.error_surname));
         } else if (StringUtils.checkEmptyEditText(edtOrganization)) {
             showAlertDialog(getContext(), getString(R.string.error_organization));
-        } else if (StringUtils.checkEmptyEditText(edtEmailAddress)) {
-            showAlertDialog(getContext(), getString(R.string.error_email_address));
         } else if (StringUtils.checkEmptyEditText(edtCompany)) {
             showAlertDialog(getContext(), getString(R.string.error_company));
         } else if (StringUtils.checkEmptyEditText(edtStaff)) {

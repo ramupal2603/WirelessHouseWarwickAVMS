@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/largeMargin"
             android:text="Please enter your ID"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/whiteColor"
             android:textSize="@dimen/regularTextSize" />
 
         <LinearLayout
