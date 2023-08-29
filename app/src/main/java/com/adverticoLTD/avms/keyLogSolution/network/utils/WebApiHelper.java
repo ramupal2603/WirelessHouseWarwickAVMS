@@ -10,6 +10,7 @@ public class WebApiHelper {
 
 
     public static final String UPLOAD_SIGNATURE = "RestController.php?action=uploadSignature";
+    public static final String UPLOAD_DELIVERY_SIGNATURE = "RestController.php?action=uploadDeliverySignature";
     public static final String STAFF_LIST = "RestController.php?action=getKeystafflist";
     public static final String SIGN_OUT = "RestController.php?action=keySignout";
     public static final String SIGN_IN = "RestController.php?action=keySignin";

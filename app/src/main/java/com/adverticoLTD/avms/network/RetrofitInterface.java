@@ -3,8 +3,10 @@ package com.adverticoLTD.avms.network;
 
 import com.adverticoLTD.avms.data.acesstoken.AccessTokenResponseModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
+import com.adverticoLTD.avms.data.delivery.DeliveryListingResponseModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryRequestModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryResponseModel;
+import com.adverticoLTD.avms.data.delivery.DeliverySignInRequestModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerMessageResponseModel;
 import com.adverticoLTD.avms.data.disclaimerMessage.DisclaimerRequestModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestModel;
@@ -75,10 +77,19 @@ public interface RetrofitInterface {
                                                          @Header("Accesskeydate") String dateTime,
                                                          @Body SignedInRecordsRequestModel requestModel);
 
+    @POST(WebApiHelper.getDeliveryListing)
+    Call<DeliveryListingResponseModel> getDeliveryListing(@Header("Accesskey") String basicToken,
+                                                          @Header("Accesskeydate") String dateTime);
+
     @POST(WebApiHelper.sendDeliveryEmail)
     Call<DeliveryResponseModel> sendDeliveryEmail(@Header("Accesskey") String basicToken,
                                                   @Header("Accesskeydate") String dateTime,
                                                   @Body DeliveryRequestModel requestModel);
+
+    @POST(WebApiHelper.deliverySignin)
+    Call<DeliveryResponseModel> deliverySignIn(@Header("Accesskey") String basicToken,
+                                               @Header("Accesskeydate") String dateTime,
+                                               @Body DeliverySignInRequestModel requestModel);
 
 
 }

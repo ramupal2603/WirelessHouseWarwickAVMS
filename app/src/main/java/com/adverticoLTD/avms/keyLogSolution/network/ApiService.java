@@ -25,6 +25,10 @@ public interface ApiService {
     @POST(WebApiHelper.UPLOAD_SIGNATURE)
     Call<UploadFileResponseModel> uploadFile(@Part MultipartBody.Part signature1);
 
+    @Multipart
+    @POST(WebApiHelper.UPLOAD_DELIVERY_SIGNATURE)
+    Call<UploadFileResponseModel> uploadDeliveryFile(@Part MultipartBody.Part signature1);
+
 
     @GET(WebApiHelper.STAFF_LIST)
     Call<StaffListResponseModel> getStaffList(@Header("Accesskey") String basicToken,
