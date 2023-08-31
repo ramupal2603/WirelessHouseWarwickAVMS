@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/_25sdp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.35"
             android:gravity="center|start"
             android:text="Jamil"
             android:textColor="@color/colorBlack"
@@ -40,16 +40,16 @@
 
         <com.adverticoLTD.avms.customClasses.FontsTextView
             android:id="@+id/txtConfirmText"
-            android:background="@drawable/edt_green_background"
+            android:background="@drawable/edt_black_background"
             android:layout_width="0dp"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_5sdp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_weight="0.25"
+            android:layout_weight="0.15"
             android:text="Confirm"
-            android:textColor="@color/colorBlack"
+            android:textColor="@color/whiteColor"
             android:textSize="@dimen/list_text_size" />
 
 

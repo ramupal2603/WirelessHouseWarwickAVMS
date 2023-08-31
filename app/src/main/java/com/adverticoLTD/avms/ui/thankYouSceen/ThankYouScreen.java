@@ -37,7 +37,9 @@ public class ThankYouScreen extends BaseActivity {
         String scanStatus = getIntent().getStringExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS);
 
         txtUserName.setText(userName);
-        if (scanStatus.equals(ConstantClass.RESPONSE_DELIVERY_SUCCESS)) {
+        if (scanStatus.equals(ConstantClass.RESPONSE_DELIVERY_SIGNED_SUCCESS)) {
+            txtThanksMessage.setText("Delivery Sign Successfully");
+        } else if (scanStatus.equals(ConstantClass.RESPONSE_DELIVERY_SUCCESS)) {
             txtThanksMessage.setText("Delivery Email Sent Successfully");
         } else {
             txtThanksMessage.setText(scanStatus.equals(ConstantClass.RESPONSE_SUCCESS_SIGN_IN)

@@ -235,7 +235,7 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
 
                         Intent intent = new Intent(DeliveryListingActivity.this, ThankYouScreen.class);
                         intent.putExtra(com.adverticoLTD.avms.helpers.ConstantClass.EXTRAA_VIEW_USER_NAME, "");
-                        intent.putExtra(com.adverticoLTD.avms.helpers.ConstantClass.EXTRAA_VIEW_SCAN_STATUS, com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_DELIVERY_SUCCESS);
+                        intent.putExtra(com.adverticoLTD.avms.helpers.ConstantClass.EXTRAA_VIEW_SCAN_STATUS, com.adverticoLTD.avms.helpers.ConstantClass.RESPONSE_DELIVERY_SIGNED_SUCCESS);
                         startActivity(intent);
                         setResult(RESULT_OK);
                         finish();

@@ -44,11 +44,12 @@ public class DeliveryAdapter extends RecyclerView.Adapter<DeliveryAdapter.Dashbo
         fireEvacuationHolder.txtFirstName.setText(String.format("%s - %s", arrItem.getCompany_id(), arrItem.getStaff_id()));
         fireEvacuationHolder.txtDateTime.setText(arrItem.getCreated_datetime());
         fireEvacuationHolder.txtConfirmText.setText(arrItem.getStatus().equals("1") ? "Sign" : "Signed");
+        fireEvacuationHolder.txtConfirmText.setBackgroundResource(arrItem.getStatus().equals("1") ? R.drawable.edt_black_background : R.drawable.edt_grey_background);
         fireEvacuationHolder.loutResultView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arrItem.getStatus().equals("1")){
-                    onItemClick.OnRecordClickListener(arrItem.getId(),position);
+                if (arrItem.getStatus().equals("1")) {
+                    onItemClick.OnRecordClickListener(arrItem.getId(), position);
                 }
 
             }
