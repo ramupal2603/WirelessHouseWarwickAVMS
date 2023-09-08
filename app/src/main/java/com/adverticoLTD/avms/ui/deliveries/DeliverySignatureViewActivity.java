@@ -14,8 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.adverticoLTD.avms.R;
+import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.helpers.StringUtils;
-import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseDataModel;
 import com.adverticoLTD.avms.keyLogSolution.data.staffList.StaffListDataModel;
 import com.adverticoLTD.avms.keyLogSolution.ui.signatureView.SignatureViewActivity;
