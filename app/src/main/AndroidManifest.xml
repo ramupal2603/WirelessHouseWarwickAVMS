@@ -52,6 +52,11 @@
             android:configChanges="keyboardHidden|orientation"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.adverticoLTD.avms.ui.deliveries.DeliverySignatureViewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name="com.adverticoLTD.avms.brotherPrinter.PrinterSettingsActivity"

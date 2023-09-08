@@ -38,7 +38,7 @@ public class ThankYouScreen extends BaseActivity {
 
         txtUserName.setText(userName);
         if (scanStatus.equals(ConstantClass.RESPONSE_DELIVERY_SIGNED_SUCCESS)) {
-            txtThanksMessage.setText("Delivery Sign Successfully");
+            txtThanksMessage.setText("Your delivery has been signed for");
         } else if (scanStatus.equals(ConstantClass.RESPONSE_DELIVERY_SUCCESS)) {
             txtThanksMessage.setText("Delivery Email Sent Successfully");
         } else {

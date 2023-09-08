@@ -16,8 +16,6 @@ import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.data.delivery.DeliveryListDataModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryListingResponseModel;
-import com.adverticoLTD.avms.data.delivery.DeliveryParamModel;
-import com.adverticoLTD.avms.data.delivery.DeliveryRequestModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryResponseModel;
 import com.adverticoLTD.avms.data.delivery.DeliverySignInParamModel;
 import com.adverticoLTD.avms.data.delivery.DeliverySignInRequestModel;
@@ -28,8 +26,6 @@ import com.adverticoLTD.avms.keyLogSolution.data.upload.UploadFileResponseModel;
 import com.adverticoLTD.avms.keyLogSolution.helpers.ConstantClass;
 import com.adverticoLTD.avms.keyLogSolution.network.ApiService;
 import com.adverticoLTD.avms.keyLogSolution.network.utils.UploadImageHelpers;
-import com.adverticoLTD.avms.keyLogSolution.ui.signInKeyScreen.SignInKeyActivity;
-import com.adverticoLTD.avms.keyLogSolution.ui.signatureView.SignatureViewActivity;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
@@ -48,19 +44,15 @@ import retrofit2.Response;
 public class DeliveryListingActivity extends BaseActivity implements OnItemClick {
 
 
+    private static final int REQUEST_SIGN_IN_SIGNATURE = 1001;
     @BindView(R.id.loutResultView)
     LinearLayout loutResultView;
-
     @BindView(R.id.rcvFireEvacuationList)
     RecyclerView rcvFireEvacuationList;
-
     @BindView(R.id.txtVisitorListEmptyView)
     TextView txtVisitorListEmptyView;
-
-
     ArrayList<DeliveryListDataModel> arrTLTVisitorList;
     DeliveryAdapter deliveryAdapter;
-    private static final int REQUEST_SIGN_IN_SIGNATURE = 1001;
     private File file1;
     private String logIDToUpdate;
 
@@ -144,7 +136,7 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
     }
 
     private void setTLTVisitorDataAdapter(ArrayList<DeliveryListDataModel> arrTLTVisitorList) {
-        deliveryAdapter = new DeliveryAdapter(DeliveryListingActivity.this, arrTLTVisitorList,DeliveryListingActivity.this);
+        deliveryAdapter = new DeliveryAdapter(DeliveryListingActivity.this, arrTLTVisitorList, DeliveryListingActivity.this);
         rcvFireEvacuationList.setAdapter(deliveryAdapter);
     }
 
@@ -152,8 +144,8 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
     @Override
     public void OnRecordClickListener(String logID, int index) {
         if (!logID.isEmpty()) {
-            logIDToUpdate=logID;
-            Intent intent = new Intent(DeliveryListingActivity.this, SignatureViewActivity.class);
+            logIDToUpdate = logID;
+            Intent intent = new Intent(DeliveryListingActivity.this, DeliverySignatureViewActivity.class);
             startActivityForResult(intent, REQUEST_SIGN_IN_SIGNATURE);
         }
     }
@@ -163,18 +155,24 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_SIGN_IN_SIGNATURE && resultCode == RESULT_OK) {
-            String filePath = data.getStringExtra("filePath");
+            String filePath = null;
+            String name = null;
+            if (data != null) {
+                filePath = data.getStringExtra("filePath");
+                name = data.getStringExtra("name");
+                //loads the file
+                File file = new File(filePath);
+                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
+                file1 = new File(filePath);
+                uploadfile(file1, "1", name);
+            }
 
-            //loads the file
-            File file = new File(filePath);
-            Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-            file1 = new File(filePath);
-            uploadfile(file1,"1");
+
         }
 
     }
 
-    private void uploadfile(File signature, String fileNo) {
+    private void uploadfile(File signature, String fileNo, String name) {
 
         showProgressBar();
 
@@ -194,7 +192,7 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
                     if (responseModel != null && responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCES)) {
                         if (fileNo.equals("1")) {
                             String signature1 = responseModel.getSignature_name();
-                            callDeliveryUpdate(logIDToUpdate,signature1);
+                            callDeliveryUpdate(logIDToUpdate, signature1, name);
                         }
 
                     }
@@ -206,7 +204,7 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    uploadfile(signature, fileNo);
+                    uploadfile(signature, fileNo, name);
 
                 } else {
                     showToastMessage(getResources().getString(R.string.response_error_msg));
@@ -222,11 +220,11 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
     }
 
 
-    private void callDeliveryUpdate(String logId,String signature) {
+    private void callDeliveryUpdate(String logId, String signature, String name) {
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.deliverySignIn(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(), getDeliveryEmailRequestModel(logId,signature)).enqueue(new Callback<DeliveryResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getDeliveryEmailRequestModel(logId, signature, name)).enqueue(new Callback<DeliveryResponseModel>() {
             @Override
             public void onResponse(Call<DeliveryResponseModel> call, Response<DeliveryResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -251,7 +249,7 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    callDeliveryUpdate(logId,signature);
+                    callDeliveryUpdate(logId, signature, name);
 
                 }
                 hideProgressBar();
@@ -265,13 +263,14 @@ public class DeliveryListingActivity extends BaseActivity implements OnItemClick
         });
     }
 
-    private DeliverySignInRequestModel getDeliveryEmailRequestModel(String logId,String signature) {
+    private DeliverySignInRequestModel getDeliveryEmailRequestModel(String logId, String signature, String name) {
 
         DeliverySignInRequestModel deliveryRequestModel = new DeliverySignInRequestModel();
 
         DeliverySignInParamModel deliveryParamModel = new DeliverySignInParamModel();
         deliveryParamModel.setDelivery_signature(signature);
         deliveryParamModel.setKey_log_id(logId);
+        deliveryParamModel.setSignin_name(name);
         deliveryRequestModel.setParam(deliveryParamModel);
 
         return deliveryRequestModel;

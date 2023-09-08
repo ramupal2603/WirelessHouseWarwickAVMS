@@ -26,7 +26,7 @@ public class WebApiHelper {
     public static final String MSG_TYPE_DISCLAIMER = "2";
 
     //BaseUrl of Repository
-    public static String BASE_URL = "https://adverticoavms.co.uk/Johncadburyhouse/Webservice/";
+    public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
     //public static String BASE_URL = "https://adverticoavms.co.uk/Bruntwood/Webservice/";
 
 

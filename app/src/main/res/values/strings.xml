@@ -27,6 +27,7 @@
 
     <string name="please_choose_option_below">Please choose one of the options below</string>
     <string name="please_enter_your_contractor_name">Please enter your Contractor Name</string>
+    <string name="please_enter_your_name">Please enter your Name</string>
     <string name="please_enter_your_staff_id">Please enter your Staff ID</string>
     <string name="something_went_wrong">Something went wrong please try again later</string>
 
@@ -662,7 +663,7 @@
     <string name="surname_validation_msg">Please enter surname</string>
     <string name="company_validation_msg">Please enter company name</string>
     <string name="mobile_validation_msg">Please enter mobile no</string>
-
+    <string name="submit">Submit</string>
 
 
 </resources>
