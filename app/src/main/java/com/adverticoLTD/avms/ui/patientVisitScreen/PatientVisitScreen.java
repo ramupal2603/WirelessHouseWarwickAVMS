@@ -1,4 +1,4 @@
-package com.adverticoLTD.avms.ui.contractorView.existingContractorScreen;
+package com.adverticoLTD.avms.ui.patientVisitScreen;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -19,9 +19,11 @@ import com.adverticoLTD.avms.BuildConfig;
 import com.adverticoLTD.avms.MyApplication;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
-import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestModel;
-import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestParamModel;
-import com.adverticoLTD.avms.data.existingContractor.ExistingContractorResponseModel;
+import com.adverticoLTD.avms.data.companies.CompanyListDataModel;
+import com.adverticoLTD.avms.data.patientVisitor.PatientVisitorRequestModel;
+import com.adverticoLTD.avms.data.patientVisitor.PatientVisitorRequestParamModel;
+import com.adverticoLTD.avms.data.patientVisitor.PatientVisitorResponseModel;
+import com.adverticoLTD.avms.data.stafflist.StaffListResponseDataModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
@@ -33,18 +35,37 @@ import com.adverticoLTD.avms.ui.Utils;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
 import com.pixplicity.easyprefs.library.Prefs;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ExistingContractorActivity extends BaseActivity {
+public class PatientVisitScreen extends BaseActivity {
 
-    @BindView(R.id.edtContractorId)
-    EditText edtContractorId;
+    @BindView(R.id.edtFirstName)
+    EditText edtFirstName;
+
+    @BindView(R.id.edtSurName)
+    EditText edtSurName;
+
+    @BindView(R.id.edtHereToVisit)
+    EditText edtHereToVisit;
+
+    @BindView(R.id.edtCarRegistration)
+    EditText edtCarRegistration;
+
 
     @BindView(R.id.imgSignIn)
     ImageView imgSignIn;
+
+
+    ArrayList<CompanyListDataModel> arrCompaniesList = new ArrayList<>();
+    ArrayList<StaffListResponseDataModel> arrStaffList = new ArrayList<>();
+    private String selectedCompanyID = "-1";
+    private String selectedStaffID = "-1";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,21 +73,21 @@ public class ExistingContractorActivity extends BaseActivity {
         imgSignIn.setOnClickListener(this::onClick);
     }
 
+
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_existing_contractor;
+        return R.layout.activity_patient_visitor;
     }
 
     @Override
     public void onClick(View view) {
-
         if (view == imgSignIn) {
             showDisclaimerDialog();
         }
     }
 
     public void showDisclaimerDialog() {
-        final Dialog dialog = new Dialog(ExistingContractorActivity.this);
+        final Dialog dialog = new Dialog(PatientVisitScreen.this);
         // Include dialog.xml file
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.layout_disclaimer);
@@ -87,7 +108,7 @@ public class ExistingContractorActivity extends BaseActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateExistingContractorSignIn();
+                validateNormalVisitorSignIn();
                 dialog.dismiss();
             }
         });
@@ -104,32 +125,41 @@ public class ExistingContractorActivity extends BaseActivity {
         dialog.show();
     }
 
-    private void validateExistingContractorSignIn() {
+    private void validateNormalVisitorSignIn() {
 
-        if (StringUtils.checkEmptyEditText(edtContractorId)) {
-            showAlertDialog(getContext(), getResources().getString(R.string.error_contractor_id));
+        if (StringUtils.checkEmptyEditText(edtFirstName)) {
+            showAlertDialog(getContext(), getString(R.string.error_first_name));
+        } else if (StringUtils.checkEmptyEditText(edtSurName)) {
+            showAlertDialog(getContext(), getString(R.string.error_surname));
+        } else if (StringUtils.checkEmptyEditText(edtHereToVisit)) {
+            showAlertDialog(getContext(), getString(R.string.error_here_to_visit));
         } else {
-            siginInExistingContractorWithID();
+            callInsertPatientVisitor();
         }
+
     }
 
-    private void siginInExistingContractorWithID() {
+    private void callInsertPatientVisitor() {
+
+
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
-        apiService.existingContractorSignIn(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(), getExistingContractorRequest()).enqueue(new Callback<ExistingContractorResponseModel>() {
+        apiService.insertPatientVisitor(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getPatientVisitorRequestData()).enqueue(new Callback<PatientVisitorResponseModel>() {
             @Override
-            public void onResponse(Call<ExistingContractorResponseModel> call, Response<ExistingContractorResponseModel> response) {
+            public void onResponse(Call<PatientVisitorResponseModel> call, Response<PatientVisitorResponseModel> response) {
                 if (response.isSuccessful()) {
-                    ExistingContractorResponseModel responseModel = response.body();
+                    PatientVisitorResponseModel responseModel = response.body();
                     if (responseModel != null && responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCESS)) {
+
                         Bitmap qrCodeImage = generateQrCodeData(responseModel.getData().getVisitor_id());
 
+
                         Bitmap badgeImage = generatePrintData(responseModel.getData().getName(),
-                                responseModel.getData().getVisitor_organization(),
-                                responseModel.getData().getStaff_name(),
-                                responseModel.getData().getCompany_name(),
-                                false, true, qrCodeImage, false, false);
+                                "",
+                                responseModel.getData().getHere_to_visit(),
+                                "Patient Visit", false, false,
+                                qrCodeImage, false, true);
 
                         String bitmapString = Utils.BitMapToString(badgeImage);
 
@@ -141,44 +171,42 @@ public class ExistingContractorActivity extends BaseActivity {
                         }
 
 
-                        Intent intent = new Intent(ExistingContractorActivity.this, ThankYouScreen.class);
+                        Intent intent = new Intent(PatientVisitScreen.this, ThankYouScreen.class);
                         intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, responseModel.getData().getName());
                         intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
                         startActivity(intent);
                         setResult(RESULT_OK);
                         finish();
+
                     } else {
-                        showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in_contractor));
+                        showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in));
                     }
-
-                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
-                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
-                    getAccessKeyToken();
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    siginInExistingContractorWithID();
-
                 }
                 hideProgressBar();
             }
 
             @Override
-            public void onFailure(Call<ExistingContractorResponseModel> call, Throwable t) {
+            public void onFailure(Call<PatientVisitorResponseModel> call, Throwable t) {
                 t.printStackTrace();
-                showErrorMessage();
                 hideProgressBar();
             }
         });
     }
 
-    private ExistingContractorRequestModel getExistingContractorRequest() {
-        ExistingContractorRequestModel requestModel = new ExistingContractorRequestModel();
-        ExistingContractorRequestParamModel paramModel = new ExistingContractorRequestParamModel();
-        paramModel.setVisitor_id(edtContractorId.getText().toString().trim());
-        requestModel.setParam(paramModel);
+    private PatientVisitorRequestModel getPatientVisitorRequestData() {
+        PatientVisitorRequestModel requestModel = new PatientVisitorRequestModel();
+
+        String siteID = Prefs.getString(PreferenceKeys.SITE_ID, "0");
+        PatientVisitorRequestParamModel requestParamModel = new PatientVisitorRequestParamModel();
+        requestParamModel.setFirst_name(edtFirstName.getText().toString().trim());
+        requestParamModel.setSur_name(edtSurName.getText().toString().trim());
+        requestParamModel.setHere_to_visit(edtHereToVisit.getText().toString().trim());
+        requestParamModel.setVehicle_registration("N/A");
+        requestParamModel.setSite_id(siteID);
+        requestModel.setParam(requestParamModel);
+
         return requestModel;
     }
+
+
 }

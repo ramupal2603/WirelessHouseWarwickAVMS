@@ -205,7 +205,7 @@ public class NewContractorActivity extends BaseActivity {
                                 responseModel.getData().getVisitor_organization(),
                                 responseModel.getData().getStaff_name(),
                                 responseModel.getData().getCompany_name(), false,
-                                true, qrCodeImage, false);
+                                true, qrCodeImage, false, false);
 
                         String bitmapString = Utils.BitMapToString(badgeImage);
 

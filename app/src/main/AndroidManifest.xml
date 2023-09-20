@@ -134,6 +134,13 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
+            android:name=".ui.patientVisitScreen.PatientVisitScreen"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
             android:name="com.adverticoLTD.avms.ui.contractorView.existingContractorScreen.ExistingContractorActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape"

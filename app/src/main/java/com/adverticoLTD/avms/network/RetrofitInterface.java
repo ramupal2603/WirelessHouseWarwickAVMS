@@ -19,6 +19,8 @@ import com.adverticoLTD.avms.data.normalContractor.NormalContractorRequestModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorResponseModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorRequestModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorResponseModel;
+import com.adverticoLTD.avms.data.patientVisitor.PatientVisitorRequestModel;
+import com.adverticoLTD.avms.data.patientVisitor.PatientVisitorResponseModel;
 import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeRequestModel;
 import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseModel;
 import com.adverticoLTD.avms.data.siteList.SiteListResponseModel;
@@ -101,6 +103,12 @@ public interface RetrofitInterface {
 
     @GET(WebApiHelper.GET_SITE_LIST)
     Call<SiteListResponseModel> getSiteList();
+
+
+    @POST(WebApiHelper.insertPatientVisitor)
+    Call<PatientVisitorResponseModel> insertPatientVisitor(@Header("Accesskey") String basicToken,
+                                                           @Header("Accesskeydate") String dateTime,
+                                                           @Body PatientVisitorRequestModel requestModel);
 
 
 }

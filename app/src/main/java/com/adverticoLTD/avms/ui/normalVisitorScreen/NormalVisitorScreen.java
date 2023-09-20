@@ -209,7 +209,7 @@ public class NormalVisitorScreen extends BaseActivity {
                                 responseModel.getData().getVisitor_organization(),
                                 responseModel.getData().getStaff_name(),
                                 responseModel.getData().getCompany_name(), isRegularVisitor, false,
-                                qrCodeImage, false);
+                                qrCodeImage, false, false);
 
                         String bitmapString = Utils.BitMapToString(badgeImage);
 

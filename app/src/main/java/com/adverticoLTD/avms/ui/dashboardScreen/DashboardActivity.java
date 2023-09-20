@@ -161,7 +161,7 @@ public class DashboardActivity extends BaseActivity {
                             Bitmap badgeImage = generatePrintData(responseDataModel.getName(),
                                     responseDataModel.getVisitor_organization(), responseDataModel.getStaff_name(),
                                     responseDataModel.getCompany_name(), isRegularVisitor,
-                                    isContractor, qrCodeImage, isStaff);
+                                    isContractor, qrCodeImage, isStaff, false);
 
                             String bitmapString = Utils.BitMapToString(badgeImage);
 

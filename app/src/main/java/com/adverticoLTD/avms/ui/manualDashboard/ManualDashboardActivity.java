@@ -15,6 +15,7 @@ import com.adverticoLTD.avms.ui.contractorView.contractorTypeScreen.ContractorTy
 import com.adverticoLTD.avms.ui.deliveries.DeliverySelectionScreen;
 import com.adverticoLTD.avms.ui.manualStaff.SelectionActivity;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
+import com.adverticoLTD.avms.ui.patientVisitScreen.PatientVisitScreen;
 import com.adverticoLTD.avms.ui.userSelection.UserTypeActivity;
 
 import butterknife.BindView;
@@ -95,7 +96,8 @@ public class ManualDashboardActivity extends BaseActivity {
             startActivity(intent);
         }
         if (view == loutPatientVisit) {
-
+            Intent intent = new Intent(ManualDashboardActivity.this, PatientVisitScreen.class);
+            startActivity(intent);
         }
     }
 

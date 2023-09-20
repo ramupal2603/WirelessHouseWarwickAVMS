@@ -376,7 +376,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     public Bitmap generatePrintData(String firstName, String organizationName, String staffName,
                                     String companyName, Boolean isFromRegularVisitor, Boolean isContractor,
-                                    Bitmap qrCodeBitmap, Boolean isFromStaffVisitor) {
+                                    Bitmap qrCodeBitmap, Boolean isFromStaffVisitor, boolean isFromPatientVisitor) {
         Paint paint = new Paint();
         paint.setTextSize(100.0f);
         paint.setColor(Color.WHITE);
@@ -431,7 +431,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         String headerTitle = "";
 
-        if (isFromStaffVisitor) {
+        if (isFromPatientVisitor) {
+            headerTitle = "Patient Visitor";
+        }else if (isFromStaffVisitor) {
             headerTitle = "Staff";
         } else if (isFromRegularVisitor) {
             headerTitle = "Regular";
@@ -554,7 +556,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                             Bitmap badgeImage = generatePrintData(responseDataModel.getName(),
                                     responseDataModel.getVisitor_organization(), responseDataModel.getStaff_name(),
                                     responseDataModel.getCompany_name(), isRegularVisitor,
-                                    isContractor, qrCodeImage, isStaff);
+                                    isContractor, qrCodeImage, isStaff, false);
 
                             String bitmapString = Utils.BitMapToString(badgeImage);
 
