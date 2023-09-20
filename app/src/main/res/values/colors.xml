@@ -25,6 +25,8 @@
     <color name="colorPink">#FF017E</color>
     <color name="colorSignOut">#313759</color>
     <color name="grayColor">#929292</color>
+    <color name="colorSignOutButton">#313759</color>
+    <color name="colorBgGray">#FAFAFA</color>
 
 
 </resources>

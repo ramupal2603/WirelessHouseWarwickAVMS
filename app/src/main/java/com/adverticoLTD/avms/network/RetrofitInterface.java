@@ -13,6 +13,8 @@ import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestMo
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorResponseModel;
 import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordResponseModel;
 import com.adverticoLTD.avms.data.getSignedInRecords.SignedInRecordsRequestModel;
+import com.adverticoLTD.avms.data.getStaffList.StaffSignRequestModel;
+import com.adverticoLTD.avms.data.getStaffList.StaffSignResponseModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorRequestModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorResponseModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorRequestModel;
@@ -91,6 +93,11 @@ public interface RetrofitInterface {
     Call<DeliveryResponseModel> deliverySignIn(@Header("Accesskey") String basicToken,
                                                @Header("Accesskeydate") String dateTime,
                                                @Body DeliverySignInRequestModel requestModel);
+
+    @POST(WebApiHelper.getSignedStaffList)
+    Call<StaffSignResponseModel> getSigneStaffList(@Header("Accesskey") String basicToken,
+                                                   @Header("Accesskeydate") String dateTime,
+                                                   @Body StaffSignRequestModel requestModel);
 
     @GET(WebApiHelper.GET_SITE_LIST)
     Call<SiteListResponseModel> getSiteList();

@@ -12,9 +12,8 @@ import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.keyLogSolution.ui.welcomeScreen.WelcomeActivity;
 import com.adverticoLTD.avms.ui.contractorView.contractorTypeScreen.ContractorTypeActivity;
-import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
-import com.adverticoLTD.avms.ui.deliveries.DeliveriesActivity;
 import com.adverticoLTD.avms.ui.deliveries.DeliverySelectionScreen;
+import com.adverticoLTD.avms.ui.manualStaff.SelectionActivity;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
 import com.adverticoLTD.avms.ui.userSelection.UserTypeActivity;
 
@@ -40,6 +39,12 @@ public class ManualDashboardActivity extends BaseActivity {
     @BindView(R.id.loutDeliveries)
     LinearLayout loutDeliveries;
 
+    @BindView(R.id.loutStaffScreen)
+    LinearLayout loutStaffScreen;
+
+    @BindView(R.id.loutPatientVisit)
+    LinearLayout loutPatientVisit;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,8 @@ public class ManualDashboardActivity extends BaseActivity {
         loutKeyLog.setOnClickListener(this::onClick);
         loutSignOut.setOnClickListener(this::onClick);
         loutDeliveries.setOnClickListener(this::onClick);
+        loutStaffScreen.setOnClickListener(this::onClick);
+        loutPatientVisit.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -83,6 +90,13 @@ public class ManualDashboardActivity extends BaseActivity {
             Intent intent = new Intent(ManualDashboardActivity.this, DeliverySelectionScreen.class);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_VISITOR);
         }
+        if (view == loutStaffScreen) {
+            Intent intent = new Intent(ManualDashboardActivity.this, SelectionActivity.class);
+            startActivity(intent);
+        }
+        if (view == loutPatientVisit) {
+
+        }
     }
 
     @Override
@@ -90,7 +104,10 @@ public class ManualDashboardActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ConstantClass.REQUEST_NORMAL_VISITOR && resultCode == RESULT_OK) {
             finish();
-        }else if (requestCode == ConstantClass.REQUEST_NORMAL_CONTRACTOR && resultCode == RESULT_OK) {
+        } else if (requestCode == ConstantClass.REQUEST_NORMAL_CONTRACTOR && resultCode == RESULT_OK) {
+            setResult(RESULT_OK);
+            finish();
+        } else if (requestCode == ConstantClass.REQUEST_NORMAL_STAFF && resultCode == RESULT_OK) {
             setResult(RESULT_OK);
             finish();
         }

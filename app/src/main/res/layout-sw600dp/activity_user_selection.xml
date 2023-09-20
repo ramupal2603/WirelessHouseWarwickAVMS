@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image_inner"
+    android:orientation="vertical"
+
+    tools:ignore="MissingDefaultResource">
+
+
+    <include layout="@layout/layout_common_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/largeMargin"
+            android:layout_marginTop="@dimen/common_margin"
+            android:layout_marginRight="@dimen/largeMargin"
+            android:layout_weight="0.70"
+            android:padding="@dimen/_10sdp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edtTextHeight">
+
+                <com.adverticoLTD.avms.customClasses.FontsTextView
+                    android:id="@+id/txtSignIn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edt_background"
+                    android:gravity="center"
+                    android:text="Sign In"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="42sp" />
+
+                <com.adverticoLTD.avms.customClasses.FontsTextView
+                    android:id="@+id/txtSignOut"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/common_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/edt_background"
+                    android:gravity="center"
+                    android:text="Sign Out"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="42sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margin">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/common_margin"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/common_margin">
+
+                    <ImageView
+                        android:id="@+id/imgBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_back_btn"
+                        app:tint="@color/colorTheme" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="0.15"
+            android:layout_height="0dp">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <include layout="@layout/layout_common_footer"/>
+
+
+
+
+</LinearLayout>
