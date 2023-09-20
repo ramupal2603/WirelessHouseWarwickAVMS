@@ -15,6 +15,7 @@ public class WebApiHelper {
     public static final String sendDeliveryEmail = "sendDeliveryemail";
     public static final String getDeliveryListing = "getCourierdeliverylist";
     public static final String deliverySignin = "deliverySignin";
+    public static final String GET_SITE_LIST = "getSitelist";
 
     // Device Type
     public static final String DEVICE_TYPE_TAB = "1";
@@ -26,8 +27,8 @@ public class WebApiHelper {
     public static final String MSG_TYPE_DISCLAIMER = "2";
 
     //BaseUrl of Repository
-    public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
-    //public static String BASE_URL = "https://adverticoavms.co.uk/Bruntwood/Webservice/";
+//    public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
+    public static String BASE_URL = "http://adverticoavms.co.uk/Annemariehowes/Webservice/";
 
 
 }

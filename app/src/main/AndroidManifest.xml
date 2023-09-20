@@ -85,6 +85,13 @@
             android:windowSoftInputMode="adjustPan" />
 
         <activity
+            android:name="com.adverticoLTD.avms.ui.siteSelectionView.SiteSelectionViewActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
             android:name="com.adverticoLTD.avms.ui.manualDashboard.ManualDashboardActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="landscape"

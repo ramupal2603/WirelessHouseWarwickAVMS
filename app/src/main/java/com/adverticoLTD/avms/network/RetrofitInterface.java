@@ -19,6 +19,7 @@ import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorRequestModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorResponseModel;
 import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeRequestModel;
 import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseModel;
+import com.adverticoLTD.avms.data.siteList.SiteListResponseModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListRequestModel;
 import com.adverticoLTD.avms.data.stafflist.StaffListResponseModel;
 import com.adverticoLTD.avms.network.utils.WebApiHelper;
@@ -90,6 +91,9 @@ public interface RetrofitInterface {
     Call<DeliveryResponseModel> deliverySignIn(@Header("Accesskey") String basicToken,
                                                @Header("Accesskeydate") String dateTime,
                                                @Body DeliverySignInRequestModel requestModel);
+
+    @GET(WebApiHelper.GET_SITE_LIST)
+    Call<SiteListResponseModel> getSiteList();
 
 
 }

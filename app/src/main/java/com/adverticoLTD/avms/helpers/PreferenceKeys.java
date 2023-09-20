@@ -15,4 +15,5 @@ public class PreferenceKeys {
     public static final String PREF_IP_ADDRESS = "PREF_IP_ADDRESS";
 
     public static final String PREF_ACCESS_TOKEN = "PREF_ACCESS_TOKEN";
+    public static final String SITE_ID = "SITE_ID";
 }

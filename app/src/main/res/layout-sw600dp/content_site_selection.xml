@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.siteSelectionView.SiteSelectionViewActivity"
+    tools:ignore="MissingDefaultResource"
+    android:background="@drawable/bg_image_inner"
+    tools:showIn="@layout/activity_site_selection_view">
+
+
+    <include layout="@layout/layout_common_header" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/loutSiteSelectionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <com.adverticoLTD.avms.customClasses.FontTextViewBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/please_select_site"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/headerTextSize" />
+
+            <EditText
+                android:id="@+id/edtSiteName"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/common_margin"
+                android:background="@drawable/edt_background"
+                android:hint="@string/select_site_here"
+                android:gravity="center"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:textColor="@color/grayColor"
+                android:maxLines="1"
+                android:editable="false"
+                android:paddingLeft="@dimen/common_margin"
+                android:textSize="@dimen/mediumTextSize"
+                android:paddingStart="@dimen/common_margin" />
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="@dimen/_250sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/common_margin"
+                android:background="@drawable/btn_border_color"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/mediumTextSize" />
+
+            <ImageView
+                android:id="@+id/imgBackToMainMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/common_margin"
+                android:src="@drawable/backbtn" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

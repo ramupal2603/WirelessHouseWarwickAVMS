@@ -24,7 +24,7 @@
     <color name="colorText">#666666</color>
     <color name="colorPink">#FF017E</color>
     <color name="colorSignOut">#313759</color>
-
+    <color name="grayColor">#929292</color>
 
 
 </resources>

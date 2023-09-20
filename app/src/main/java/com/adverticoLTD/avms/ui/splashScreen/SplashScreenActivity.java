@@ -10,7 +10,10 @@ import com.adverticoLTD.avms.BuildConfig;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.brotherPrinter.PrinterSettingsActivity;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
+import com.adverticoLTD.avms.ui.siteSelectionView.SiteSelectionViewActivity;
+import com.pixplicity.easyprefs.library.Prefs;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -22,7 +25,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        redirectDashboardActivity();
+
+
+        String siteId = Prefs.getString(PreferenceKeys.SITE_ID, "");
+
+        if (siteId != null && !siteId.isEmpty()) {
+            redirectDashboardActivity();
+        } else {
+            redirectSiteSelectionActivity();
+        }
     }
 
     private void redirectDashboardActivity() {
@@ -36,6 +47,16 @@ public class SplashScreenActivity extends AppCompatActivity {
                 }
                 finish();
 
+            }
+        }, ConstantClass.REDIRECTION_INTERVAL);
+    }
+
+    private void redirectSiteSelectionActivity() {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                startActivity(new Intent(getApplicationContext(), SiteSelectionViewActivity.class));
+                finish();
             }
         }, ConstantClass.REDIRECTION_INTERVAL);
     }

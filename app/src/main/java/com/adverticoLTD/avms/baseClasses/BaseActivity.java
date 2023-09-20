@@ -361,6 +361,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     }
 
+    public void showNoSitesMessage() {
+        showToastMessage(getActivity().getResources().getString(R.string.no_site_msg));
+    }
+
     public Context getContext() {
         return BaseActivity.this;
     }
