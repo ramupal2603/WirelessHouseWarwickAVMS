@@ -23,6 +23,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.adverticoLTD.avms.R;
+import com.adverticoLTD.avms.data.companies.CompanyParamModel;
+import com.adverticoLTD.avms.data.companies.CompanyRequestModel;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
@@ -115,7 +117,7 @@ public class SignInKeyActivity extends BaseActivity {
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
         Call<KeyResponseModel> call = apiService.getKeySignInList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader());
+                DateTimeUtils.getCurrentDateHeader(),getCompanyRequestModel());
         call.enqueue(new Callback<KeyResponseModel>() {
             @Override
             public void onResponse(Call<KeyResponseModel> call, Response<KeyResponseModel> response) {
@@ -155,6 +157,15 @@ public class SignInKeyActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private CompanyRequestModel getCompanyRequestModel() {
+        String siteID=Prefs.getString(PreferenceKeys.SITE_ID,"0");
+        CompanyRequestModel requestModel=new CompanyRequestModel();
+        CompanyParamModel paramModel=new CompanyParamModel();
+        paramModel.setSite_id(siteID);
+        requestModel.setParam(paramModel);
+        return  requestModel;
     }
 
     void keyRefListDialog() {
@@ -266,7 +277,7 @@ public class SignInKeyActivity extends BaseActivity {
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
         Call<StaffListResponseModel> call = apiService.getStaffList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader());
+                DateTimeUtils.getCurrentDateHeader(),getCompanyRequestModel());
         call.enqueue(new Callback<StaffListResponseModel>() {
             @Override
             public void onResponse(Call<StaffListResponseModel> call, Response<StaffListResponseModel> response) {

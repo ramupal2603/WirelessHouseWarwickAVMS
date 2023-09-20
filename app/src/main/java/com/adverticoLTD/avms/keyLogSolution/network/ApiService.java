@@ -1,5 +1,6 @@
 package com.adverticoLTD.avms.keyLogSolution.network;
 
+import com.adverticoLTD.avms.data.companies.CompanyRequestModel;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseModel;
 import com.adverticoLTD.avms.keyLogSolution.data.signIn.KeySignInRequestModel;
 import com.adverticoLTD.avms.keyLogSolution.data.signIn.KeySigninResponseModel;
@@ -32,7 +33,7 @@ public interface ApiService {
 
     @GET(WebApiHelper.STAFF_LIST)
     Call<StaffListResponseModel> getStaffList(@Header("Accesskey") String basicToken,
-                                              @Header("Accesskeydate") String dateTime);
+                                              @Header("Accesskeydate") String dateTime,@Body CompanyRequestModel requestModel);
 
 
     @POST(WebApiHelper.SIGN_OUT)
@@ -48,10 +49,12 @@ public interface ApiService {
 
     @GET(WebApiHelper.KEY_LIST_SIGN_OUT)
     Call<KeyResponseModel> getKeyList(@Header("Accesskey") String basicToken,
-                                      @Header("Accesskeydate") String dateTime);
+                                      @Header("Accesskeydate") String dateTime,
+                                      @Body CompanyRequestModel requestModel);
 
     @GET(WebApiHelper.KEY_LIST_SIGN_IN)
     Call<KeyResponseModel> getKeySignInList(@Header("Accesskey") String basicToken,
-                                            @Header("Accesskeydate") String dateTime);
+                                            @Header("Accesskeydate") String dateTime,
+                                            @Body CompanyRequestModel requestModel);
 
 }

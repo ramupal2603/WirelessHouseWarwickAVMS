@@ -27,6 +27,8 @@ import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.data.companies.CompanyListDataModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
+import com.adverticoLTD.avms.data.companies.CompanyParamModel;
+import com.adverticoLTD.avms.data.companies.CompanyRequestModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorRequestModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorRequestParamModel;
 import com.adverticoLTD.avms.data.normalVisitor.NormalVisitorResponseModel;
@@ -321,7 +323,7 @@ public class NormalVisitorScreen extends BaseActivity {
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.getCompanies(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<CompanyListResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(),getCompanyRequestModel()).enqueue(new Callback<CompanyListResponseModel>() {
             @Override
             public void onResponse(Call<CompanyListResponseModel> call, Response<CompanyListResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -354,6 +356,15 @@ public class NormalVisitorScreen extends BaseActivity {
                 showToastMessage(getString(R.string.error_something_went_wrong));
             }
         });
+    }
+
+    private CompanyRequestModel getCompanyRequestModel() {
+        String siteID=Prefs.getString(PreferenceKeys.SITE_ID,"0");
+        CompanyRequestModel requestModel=new CompanyRequestModel();
+        CompanyParamModel paramModel=new CompanyParamModel();
+        paramModel.setSite_id(siteID);
+        requestModel.setParam(paramModel);
+        return  requestModel;
     }
 
     void companyListDialog() {
