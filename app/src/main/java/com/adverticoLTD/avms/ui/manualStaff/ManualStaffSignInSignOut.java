@@ -1,5 +1,7 @@
 package com.adverticoLTD.avms.ui.manualStaff;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,17 +11,28 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.adverticoLTD.avms.BuildConfig;
+import com.adverticoLTD.avms.MyApplication;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.data.getStaffList.StaffSignParamModel;
 import com.adverticoLTD.avms.data.getStaffList.StaffSignRequestModel;
 import com.adverticoLTD.avms.data.getStaffList.StaffSignResponseModel;
 import com.adverticoLTD.avms.data.nameList.NameListDataModel;
+import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeRequestModel;
+import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeRequestParamModel;
+import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseDataModel;
+import com.adverticoLTD.avms.data.scanQrCode.ScanQrCodeResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
+import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
+import com.adverticoLTD.avms.network.utils.WebApiHelper;
+import com.adverticoLTD.avms.ui.Utils;
+import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
+import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
@@ -162,7 +175,74 @@ public class ManualStaffSignInSignOut extends BaseActivity {
     }
 
     private void callSignInOutMethodForManual(String selectedStaffID) {
+        showProgressBar();
 
+        RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
+        apiService.scanQrCode(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
+                DateTimeUtils.getCurrentDateHeader(), getScanQrCodeRequest(selectedStaffID)).enqueue(new Callback<ScanQrCodeResponseModel>() {
+            @Override
+            public void onResponse(Call<ScanQrCodeResponseModel> call, Response<ScanQrCodeResponseModel> response) {
+                if (response.isSuccessful()) {
+                    ScanQrCodeResponseModel responseModel = response.body();
+                    if (responseModel != null) {
+                        if (responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCESS_SIGN_IN)) {
+
+
+                            ScanQrCodeResponseDataModel responseDataModel = responseModel.getData();
+
+
+
+                            boolean isStaff = responseDataModel.getVisitor_id().endsWith("@3");
+
+                            Intent intent = new Intent(ManualStaffSignInSignOut.this, ThankYouScreen.class);
+                            intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, responseModel.getData().getName());
+                            intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
+                            startActivity(intent);
+                            finish();
+
+                        } else if (responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCESS_SIGN_OUT)) {
+
+                            Intent intent = new Intent(ManualStaffSignInSignOut.this, ThankYouScreen.class);
+                            intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, responseModel.getData().getName());
+                            intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
+                            startActivity(intent);
+                            finish();
+
+                        } else {
+                            showToastMessage(getString(R.string.error_msg_scan_qr_code));
+                        }
+
+
+                    }
+                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                        || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    callSignInOutMethodForManual(selectedStaffID);
+
+                }
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(Call<ScanQrCodeResponseModel> call, Throwable t) {
+                t.printStackTrace();
+                hideProgressBar();
+            }
+        });
+    }
+
+    private ScanQrCodeRequestModel getScanQrCodeRequest(String scannedID) {
+        ScanQrCodeRequestModel requestModel = new ScanQrCodeRequestModel();
+        ScanQrCodeRequestParamModel paramModel = new ScanQrCodeRequestParamModel();
+        paramModel.setDevice_type(WebApiHelper.DEVICE_TYPE_TAB);
+        paramModel.setUser_id(scannedID);
+        requestModel.setParam(paramModel);
+        return requestModel;
     }
 
 

@@ -117,7 +117,7 @@ public class ExistingContractorActivity extends BaseActivity {
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.existingContractorSignIn(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getExistingContractorRequest()).enqueue(new Callback<ExistingContractorResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getExistingContractorRequest()).enqueue(new Callback<ExistingContractorResponseModel>() {
             @Override
             public void onResponse(Call<ExistingContractorResponseModel> call, Response<ExistingContractorResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -151,7 +151,7 @@ public class ExistingContractorActivity extends BaseActivity {
                         showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in_contractor));
                     }
 
-                }else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED
                         || response.code() == ConstantClass.RESPONSE_UNAUTHORIZED_FOR) {
                     getAccessKeyToken();
                     try {
@@ -167,7 +167,9 @@ public class ExistingContractorActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<ExistingContractorResponseModel> call, Throwable t) {
-
+                t.printStackTrace();
+                showErrorMessage();
+                hideProgressBar();
             }
         });
     }
