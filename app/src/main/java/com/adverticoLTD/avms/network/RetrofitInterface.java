@@ -53,7 +53,7 @@ public interface RetrofitInterface {
                                              @Header("Accesskeydate") String dateTime,
                                              @Body ScanQrCodeRequestModel requestModel);
 
-    @GET(WebApiHelper.getCompanies)
+    @POST(WebApiHelper.getCompanies)
     Call<CompanyListResponseModel> getCompanies(@Header("Accesskey") String basicToken,
                                                 @Header("Accesskeydate") String dateTime,
                                                 @Body CompanyRequestModel requestModel);

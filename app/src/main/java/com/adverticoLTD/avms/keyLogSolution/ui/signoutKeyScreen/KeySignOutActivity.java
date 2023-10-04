@@ -107,6 +107,12 @@ public class KeySignOutActivity extends BaseActivity {
     @BindView(R.id.backLayout)
     LinearLayout loutBackView;
 
+    @BindView(R.id.loutKeyDuration)
+    LinearLayout loutKeyDuration;
+
+    @BindView(R.id.txtKeyDuration)
+    TextView txtKeyDuration;
+
     String staffId = "0";
     String keyRefId = "0";
 
@@ -119,7 +125,6 @@ public class KeySignOutActivity extends BaseActivity {
 
     private File file1 = null;
     private File file2 = null;
-
     private Timer timer = new Timer();
 
 
@@ -127,6 +132,7 @@ public class KeySignOutActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        loutKeyDuration.setOnClickListener(this);
         loutKeyRefView.setOnClickListener(this);
         loutStaffView.setOnClickListener(this);
         imgSignature.setOnClickListener(this);
@@ -616,6 +622,7 @@ public class KeySignOutActivity extends BaseActivity {
         keySignOutRequestParamModel.setSignature2(signature2);
         keySignOutRequestParamModel.setStaff_id(staffId);
         keySignOutRequestParamModel.setMobile_no(mobileNo);
+        keySignOutRequestParamModel.setSite_id(Prefs.getString(PreferenceKeys.SITE_ID,"0"));
 
         keySignOutRequestModel.setParam(keySignOutRequestParamModel);
         return keySignOutRequestModel;

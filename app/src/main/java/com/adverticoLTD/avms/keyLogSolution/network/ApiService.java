@@ -31,7 +31,7 @@ public interface ApiService {
     Call<UploadFileResponseModel> uploadDeliveryFile(@Part MultipartBody.Part signature1);
 
 
-    @GET(WebApiHelper.STAFF_LIST)
+    @POST(WebApiHelper.STAFF_LIST)
     Call<StaffListResponseModel> getStaffList(@Header("Accesskey") String basicToken,
                                               @Header("Accesskeydate") String dateTime,@Body CompanyRequestModel requestModel);
 
@@ -47,12 +47,12 @@ public interface ApiService {
                                            @Header("Accesskeydate") String dateTime,
                                            @Body KeySignInRequestModel requestModel);
 
-    @GET(WebApiHelper.KEY_LIST_SIGN_OUT)
+    @POST(WebApiHelper.KEY_LIST_SIGN_OUT)
     Call<KeyResponseModel> getKeyList(@Header("Accesskey") String basicToken,
                                       @Header("Accesskeydate") String dateTime,
                                       @Body CompanyRequestModel requestModel);
 
-    @GET(WebApiHelper.KEY_LIST_SIGN_IN)
+    @POST(WebApiHelper.KEY_LIST_SIGN_IN)
     Call<KeyResponseModel> getKeySignInList(@Header("Accesskey") String basicToken,
                                             @Header("Accesskeydate") String dateTime,
                                             @Body CompanyRequestModel requestModel);

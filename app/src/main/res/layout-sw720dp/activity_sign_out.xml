@@ -214,7 +214,7 @@
                                     android:id="@+id/loutKeyRefView"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.7"
+                                    android:layout_weight="0.5"
                                     android:layout_marginRight="@dimen/space_20"
                                     android:background="@drawable/edt_background">
 
@@ -244,7 +244,40 @@
 
                                 </LinearLayout>
 
+                                <LinearLayout
+                                    android:id="@+id/loutKeyDuration"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.5"
+                                    android:visibility="gone"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
 
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtKeyDuration"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:textColor="@color/darkGrayColor"
+                                        android:text="Key Duration"
+                                        android:textSize="@dimen/normalTextSize" />
+
+                                    <View
+                                        android:layout_width="1dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="@dimen/common_margin"
+                                        android:background="@color/colorBlack" />
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="@dimen/common_margin"
+                                        android:src="@drawable/ic_arrow_drop_down_96dp"
+                                        android:tint="@color/colorBlack" />
+
+                                </LinearLayout>
 
                                 <com.adverticoLTD.avms.customClasses.FontsTextView
                                     android:id="@+id/next"
