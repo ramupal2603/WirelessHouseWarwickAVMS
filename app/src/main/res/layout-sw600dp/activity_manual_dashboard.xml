@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_image_new_updated"
+    android:background="@drawable/bg_image_inner"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
@@ -20,84 +20,27 @@
 
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_weight="0.60"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            tools:ignore="NestedWeights">
-
-            <com.adverticoLTD.avms.customClasses.FontsTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello"
-                android:textColor="@color/colorWhite"
-                android:textSize="126sp" />
-
-            <com.adverticoLTD.avms.customClasses.FontsTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/dashboard_welcome_text"
-                android:textColor="@color/colorWhite"
-                android:textSize="45sp" />
-
-            <com.adverticoLTD.avms.customClasses.FontsTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sign_in"
-                android:textColor="@color/colorWhite"
-                android:textSize="110sp" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginStart="@dimen/largeMargin"
+            android:layout_marginTop="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/largeMargin"
-            android:layout_weight="0.40"
-
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="7">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/loutHomeScreen"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/button_height"
-                    android:background="@drawable/btn_theme_border_color">
 
-                    <com.adverticoLTD.avms.customClasses.FontTextViewBold
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center|start"
-                        android:paddingLeft="@dimen/largeMargin"
-                        android:text="@string/home"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/regularTextSize" />
-
-                    <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
-                        android:layout_gravity="center"
-                        android:layout_marginRight="@dimen/largeMargin"
-                        android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/loutVisitorScreen"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
@@ -122,9 +65,11 @@
 
                 <LinearLayout
                     android:id="@+id/loutContractorScreen"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
+                    android:layout_marginLeft="@dimen/largeMargin"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
@@ -149,9 +94,11 @@
 
                 <LinearLayout
                     android:id="@+id/loutStaffScreen"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
+                    android:layout_marginLeft="@dimen/largeMargin"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
@@ -174,11 +121,20 @@
 
                 </LinearLayout>
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/loutKeyLog"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color"
                     android:visibility="visible">
 
@@ -204,10 +160,11 @@
 
                 <LinearLayout
                     android:id="@+id/loutPatientVisit"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
-
+                    android:layout_marginLeft="@dimen/largeMargin"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color"
                     android:visibility="visible">
 
@@ -261,9 +218,11 @@
 
                 <LinearLayout
                     android:id="@+id/loutSignOut"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/button_height"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/largeMargin"
                     android:background="@drawable/btn_sign_out_border_color"
                     android:visibility="visible">
 
@@ -278,15 +237,31 @@
                         android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
-                        android:layout_width="@dimen/_10sdp"
-                        android:layout_height="@dimen/_10sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
-                        android:src="@drawable/ic_buttons_arrow"
+                        android:src="@drawable/ic_signout_arrow"
                         app:tint="@color/whiteColor" />
 
 
                 </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/loutHomeScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/largeMargin"
+                android:padding="@dimen/common_margin">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_back_to_home" />
 
             </LinearLayout>
 

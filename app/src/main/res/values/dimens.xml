@@ -48,7 +48,7 @@
     <dimen name="space_180">180dp</dimen>
     <dimen name="round_corner">15dp</dimen>
     <dimen name="list_text_size">@dimen/_10sdp</dimen>
-    <dimen name="button_height">70dp</dimen>
+    <dimen name="button_height">100dp</dimen>
 
 
 </resources>
