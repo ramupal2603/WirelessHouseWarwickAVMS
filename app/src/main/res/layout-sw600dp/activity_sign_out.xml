@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_image_home_screen"
     android:gravity="top|center"
     android:orientation="vertical"
@@ -214,7 +215,7 @@
                                     android:id="@+id/loutKeyRefView"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="0.7"
+                                    android:layout_weight="0.5"
                                     android:layout_marginRight="@dimen/space_20"
                                     android:background="@drawable/edt_background">
 
@@ -244,7 +245,40 @@
 
                                 </LinearLayout>
 
+                                <LinearLayout
+                                    android:id="@+id/loutKeyDuration"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="0.5"
+                                    android:visibility="gone"
+                                    android:layout_marginRight="@dimen/space_20"
+                                    android:background="@drawable/edt_background">
 
+                                    <com.adverticoLTD.avms.customClasses.FontsTextView
+                                        android:id="@+id/txtKeyDuration"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:gravity="center_vertical"
+                                        android:paddingLeft="@dimen/largeMargin"
+                                        android:textColor="@color/darkGrayColor"
+                                        android:text="Key Duration"
+                                        android:textSize="@dimen/normalTextSize" />
+
+                                    <View
+                                        android:layout_width="1dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="@dimen/common_margin"
+                                        android:background="@color/colorBlack" />
+
+                                    <ImageView
+                                        android:layout_width="45dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_margin="@dimen/common_margin"
+                                        android:src="@drawable/ic_arrow_drop_down_96dp"
+                                        android:tint="@color/colorBlack" />
+
+                                </LinearLayout>
 
                                 <com.adverticoLTD.avms.customClasses.FontsTextView
                                     android:id="@+id/next"
@@ -401,10 +435,11 @@
                         <RelativeLayout
                             android:id="@+id/loutBtnView"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/_40sdp"
                             android:layout_marginTop="@dimen/space_10"
-                            android:layout_marginRight="40dp"
+                            android:layout_marginRight="25dp"
                             android:gravity="end">
+
 
 
                             <LinearLayout
@@ -423,11 +458,46 @@
 
 
 
+
+
+
                             <LinearLayout
                                 android:id="@+id/loutSignatureSignOutKey"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
+                                android:layout_height="@dimen/edtTextHeight"
+                                android:background="@drawable/btn_sign_in_large_view"
+                                android:visibility="visible">
+
+
+                                <com.adverticoLTD.avms.customClasses.FontsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center|start"
+                                    android:paddingLeft="@dimen/_10sdp"
+                                    android:text="Sign out Key"
+                                    android:textColor="@color/whiteColor"
+                                    android:textSize="@dimen/largeTextSize" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="@dimen/_2sdp"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:layout_marginRight="@dimen/common_margin"
+                                    android:src="@drawable/ic_signout_arrow"
+                                    app:tint="@color/whiteColor" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+
                                 android:background="@drawable/signout_button_large"
                                 android:orientation="horizontal" />
 

@@ -116,5 +116,7 @@
 
     </LinearLayout>
 
+    <include layout="@layout/layout_common_footer"/>
+
 
 </LinearLayout>
