@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -37,8 +38,8 @@ public class ManualSignInOutView extends BaseActivity {
     @BindView(R.id.imgBack)
     ImageView imgBack;
 
-    @BindView(R.id.imgSignOut)
-    TextView imgSignOut;
+    @BindView(R.id.loutImgSignIn)
+    LinearLayout loutImgSignIn;
 
     ArrayList<SignedInRecordsDataModel> arrVisitorList = new ArrayList<SignedInRecordsDataModel>();
     String selectedVisitorID = "";
@@ -144,7 +145,7 @@ public class ManualSignInOutView extends BaseActivity {
             }
         });
 
-        imgSignOut.setOnClickListener(new View.OnClickListener() {
+        loutImgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 scanQrCodeForSignOut(selectedVisitorID);
