@@ -53,12 +53,10 @@ public class PatientVisitScreen extends BaseActivity {
     @BindView(R.id.edtHereToVisit)
     EditText edtHereToVisit;
 
-    @BindView(R.id.edtCarRegistration)
-    EditText edtCarRegistration;
 
 
-    @BindView(R.id.imgSignIn)
-    ImageView imgSignIn;
+    @BindView(R.id.loutImgSignIn)
+    LinearLayout loutImgSignIn;
 
 
     ArrayList<CompanyListDataModel> arrCompaniesList = new ArrayList<>();
@@ -70,7 +68,7 @@ public class PatientVisitScreen extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        imgSignIn.setOnClickListener(this::onClick);
+        loutImgSignIn.setOnClickListener(this::onClick);
     }
 
 
@@ -81,7 +79,7 @@ public class PatientVisitScreen extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        if (view == imgSignIn) {
+        if (view == loutImgSignIn) {
             showDisclaimerDialog();
         }
     }

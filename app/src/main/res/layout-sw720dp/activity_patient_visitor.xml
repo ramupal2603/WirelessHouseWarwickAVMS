@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_image_inner"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
@@ -74,37 +75,33 @@
                 android:textSize="@dimen/smallTextSize" />
 
             <LinearLayout
+                android:id="@+id/loutImgSignIn"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/edtTextHeight"
-                android:visibility="invisible"
+                android:visibility="visible"
+                android:layout_marginLeft="@dimen/common_margin"
+                android:background="@drawable/btn_sign_in_large_view"
                 android:layout_weight="0.50">
 
-                <EditText
-                    android:id="@+id/edtCarRegistration"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/common_margin"
-                    android:layout_weight="0.70"
-                    android:background="@drawable/edt_background"
-                    android:hint="Car Registration"
-                    android:imeOptions="actionDone"
-                    android:inputType="textCapSentences"
-                    android:maxLines="1"
-                    android:paddingLeft="@dimen/largeMargin"
-                    android:textSize="@dimen/smallTextSize" />
 
-                <com.adverticoLTD.avms.customClasses.FontTextViewBold
-                    android:id="@+id/next"
-                    android:layout_width="0dp"
+
+                <com.adverticoLTD.avms.customClasses.FontsTextView
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/common_margin"
-                    android:layout_weight="0.30"
-                    android:background="@drawable/bg_grey_round_corner"
-                    android:gravity="center"
-                    android:text="@string/next"
-                    android:visibility="gone"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/regularTextSize" />
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:paddingLeft="@dimen/largeMargin"
+                    android:text="Sign In"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/largeTextSize" />
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/largeMargin"
+                    android:src="@drawable/ic_signout_arrow"
+                    app:tint="@color/whiteColor" />
 
             </LinearLayout>
 
@@ -137,6 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="end"
+                android:visibility="invisible"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 

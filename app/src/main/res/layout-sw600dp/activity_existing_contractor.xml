@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_image_inner"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
@@ -52,12 +53,38 @@
 
             </EditText>
 
-            <ImageView
-                android:id="@+id/imgSignIn"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="match_parent"
+
+            <LinearLayout
+                android:id="@+id/loutImgSignIn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:visibility="visible"
                 android:layout_marginLeft="@dimen/common_margin"
-                android:src="@drawable/ic_signin_large" />
+                android:background="@drawable/btn_sign_in_large_view"
+                android:layout_weight="0.50">
+
+
+
+                <com.adverticoLTD.avms.customClasses.FontsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:paddingLeft="@dimen/largeMargin"
+                    android:text="Sign In"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/largeTextSize" />
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/largeMargin"
+                    android:src="@drawable/ic_signout_arrow"
+                    app:tint="@color/whiteColor" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

@@ -43,13 +43,13 @@ public class ExistingContractorActivity extends BaseActivity {
     @BindView(R.id.edtContractorId)
     EditText edtContractorId;
 
-    @BindView(R.id.imgSignIn)
-    ImageView imgSignIn;
+    @BindView(R.id.loutImgSignIn)
+    LinearLayout loutImgSignIn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        imgSignIn.setOnClickListener(this::onClick);
+        loutImgSignIn.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ExistingContractorActivity extends BaseActivity {
     @Override
     public void onClick(View view) {
 
-        if (view == imgSignIn) {
+        if (view == loutImgSignIn) {
             showDisclaimerDialog();
         }
     }
