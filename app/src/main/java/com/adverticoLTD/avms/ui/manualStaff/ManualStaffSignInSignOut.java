@@ -123,10 +123,9 @@ public class ManualStaffSignInSignOut extends BaseActivity {
 
     private StaffSignRequestModel getStaffSelectionRequest() {
 
-        String siteID = Prefs.getString(PreferenceKeys.SITE_ID, "0");
+
         StaffSignRequestModel requestModel = new StaffSignRequestModel();
         StaffSignParamModel staffSignParamModel = new StaffSignParamModel();
-        staffSignParamModel.setSite_id(siteID);
         staffSignParamModel.setStaff_status(staffStatus);
         requestModel.setParam(staffSignParamModel);
         return requestModel;

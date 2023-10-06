@@ -166,7 +166,7 @@
                     android:layout_marginTop="@dimen/small_margin"
                     android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
@@ -190,11 +190,13 @@
 
                 <LinearLayout
                     android:id="@+id/loutDeliveries"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginLeft="@dimen/largeMargin"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"

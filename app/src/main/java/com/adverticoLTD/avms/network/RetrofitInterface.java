@@ -3,7 +3,6 @@ package com.adverticoLTD.avms.network;
 
 import com.adverticoLTD.avms.data.acesstoken.AccessTokenResponseModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
-import com.adverticoLTD.avms.data.companies.CompanyRequestModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryListingResponseModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryRequestModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryResponseModel;
@@ -53,10 +52,9 @@ public interface RetrofitInterface {
                                              @Header("Accesskeydate") String dateTime,
                                              @Body ScanQrCodeRequestModel requestModel);
 
-    @POST(WebApiHelper.getCompanies)
+    @GET(WebApiHelper.getCompanies)
     Call<CompanyListResponseModel> getCompanies(@Header("Accesskey") String basicToken,
-                                                @Header("Accesskeydate") String dateTime,
-                                                @Body CompanyRequestModel requestModel);
+                                                @Header("Accesskeydate") String dateTime);
 
     @POST(WebApiHelper.getStaffList)
     Call<StaffListResponseModel> getStaffList(@Header("Accesskey") String basicToken,

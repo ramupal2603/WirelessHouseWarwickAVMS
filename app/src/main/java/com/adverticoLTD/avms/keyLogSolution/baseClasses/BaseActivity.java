@@ -140,7 +140,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         DisclaimerRequestModel requestModel = new DisclaimerRequestModel();
         DisclaimerRequestParamModel requestParamModel = new DisclaimerRequestParamModel();
         requestParamModel.setType(WebApiHelper.MSG_TYPE_MARQUEE);
-        requestParamModel.setSite_id(Prefs.getString(PreferenceKeys.SITE_ID,"0"));
         requestModel.setParam(requestParamModel);
 
         return requestModel;

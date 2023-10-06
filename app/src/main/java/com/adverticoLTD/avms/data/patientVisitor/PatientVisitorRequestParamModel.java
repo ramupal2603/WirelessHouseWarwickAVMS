@@ -6,7 +6,7 @@ public class PatientVisitorRequestParamModel {
     String sur_name;
     String vehicle_registration;
     String here_to_visit;
-    String site_id;
+
 
     public String getFirst_name() {
         return first_name;
@@ -40,11 +40,5 @@ public class PatientVisitorRequestParamModel {
         this.here_to_visit = here_to_visit;
     }
 
-    public String getSite_id() {
-        return site_id;
-    }
 
-    public void setSite_id(String site_id) {
-        this.site_id = site_id;
-    }
 }

@@ -23,11 +23,9 @@ import com.adverticoLTD.avms.brotherPrinter.PrinterSettingsActivity;
 import com.adverticoLTD.avms.data.siteList.SiteListResponseDataModel;
 import com.adverticoLTD.avms.data.siteList.SiteListResponseModel;
 import com.adverticoLTD.avms.helpers.ConstantClass;
-import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
-import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -196,10 +194,9 @@ public class SiteSelectionViewActivity extends BaseActivity {
     }
 
 
-
     private void _checkValidSiteSelected() {
         if (!selectedSiteId.equals("0")) {
-            Prefs.putString(PreferenceKeys.SITE_ID, selectedSiteId);
+
             if (BuildConfig.allowBadgePrint) {
                 startActivity(new Intent(getApplicationContext(), PrinterSettingsActivity.class));
             } else {

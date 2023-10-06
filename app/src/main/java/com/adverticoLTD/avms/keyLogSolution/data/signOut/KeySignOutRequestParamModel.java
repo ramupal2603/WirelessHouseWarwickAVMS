@@ -11,7 +11,6 @@ public class KeySignOutRequestParamModel {
     String signature1;
     String signature2;
     String signout_duration;
-    String site_id;
 
     public String getSignout_duration() {
         return signout_duration;
@@ -21,13 +20,7 @@ public class KeySignOutRequestParamModel {
         this.signout_duration = signout_duration;
     }
 
-    public String getSite_id() {
-        return site_id;
-    }
 
-    public void setSite_id(String site_id) {
-        this.site_id = site_id;
-    }
 
     public String getKey_reference_id() {
         return key_reference_id;

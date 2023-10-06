@@ -23,8 +23,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.adverticoLTD.avms.R;
-import com.adverticoLTD.avms.data.companies.CompanyParamModel;
-import com.adverticoLTD.avms.data.companies.CompanyRequestModel;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
 import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
@@ -185,7 +183,7 @@ public class KeySignOutActivity extends BaseActivity {
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
         Call<StaffListResponseModel> call = apiService.getStaffList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getCompanyRequestModel());
+                DateTimeUtils.getCurrentDateHeader());
         call.enqueue(new Callback<StaffListResponseModel>() {
             @Override
             public void onResponse(Call<StaffListResponseModel> call, Response<StaffListResponseModel> response) {
@@ -303,7 +301,7 @@ public class KeySignOutActivity extends BaseActivity {
 
         ApiService apiService = RetrofitClient.getRetrofit().create(ApiService.class);
         Call<KeyResponseModel> call = apiService.getKeyList(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getCompanyRequestModel());
+                DateTimeUtils.getCurrentDateHeader());
         call.enqueue(new Callback<KeyResponseModel>() {
             @Override
             public void onResponse(Call<KeyResponseModel> call, Response<KeyResponseModel> response) {
@@ -344,14 +342,7 @@ public class KeySignOutActivity extends BaseActivity {
 
     }
 
-    private CompanyRequestModel getCompanyRequestModel() {
-        String siteID=Prefs.getString(PreferenceKeys.SITE_ID,"0");
-        CompanyRequestModel requestModel=new CompanyRequestModel();
-        CompanyParamModel paramModel=new CompanyParamModel();
-        paramModel.setSite_id(siteID);
-        requestModel.setParam(paramModel);
-        return  requestModel;
-    }
+
 
     void keyRefListDialog() {
         final Dialog dialog = new Dialog(KeySignOutActivity.this);
@@ -622,7 +613,6 @@ public class KeySignOutActivity extends BaseActivity {
         keySignOutRequestParamModel.setSignature2(signature2);
         keySignOutRequestParamModel.setStaff_id(staffId);
         keySignOutRequestParamModel.setMobile_no(mobileNo);
-        keySignOutRequestParamModel.setSite_id(Prefs.getString(PreferenceKeys.SITE_ID,"0"));
 
         keySignOutRequestModel.setParam(keySignOutRequestParamModel);
         return keySignOutRequestModel;

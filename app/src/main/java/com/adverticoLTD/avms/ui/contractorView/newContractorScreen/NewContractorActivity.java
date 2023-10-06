@@ -27,8 +27,6 @@ import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.data.companies.CompanyListDataModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
-import com.adverticoLTD.avms.data.companies.CompanyParamModel;
-import com.adverticoLTD.avms.data.companies.CompanyRequestModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorRequestModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorRequestParamModel;
 import com.adverticoLTD.avms.data.normalContractor.NormalContractorResponseModel;
@@ -321,7 +319,7 @@ public class NewContractorActivity extends BaseActivity {
 
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.getCompanies(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(),getCompanyRequestModel()).enqueue(new Callback<CompanyListResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<CompanyListResponseModel>() {
             @Override
             public void onResponse(Call<CompanyListResponseModel> call, Response<CompanyListResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -356,14 +354,7 @@ public class NewContractorActivity extends BaseActivity {
         });
     }
 
-    private CompanyRequestModel getCompanyRequestModel() {
-        String siteID=Prefs.getString(PreferenceKeys.SITE_ID,"0");
-        CompanyRequestModel requestModel=new CompanyRequestModel();
-        CompanyParamModel paramModel=new CompanyParamModel();
-        paramModel.setSite_id(siteID);
-        requestModel.setParam(paramModel);
-        return  requestModel;
-    }
+
 
     void companyListDialog() {
         final Dialog dialog = new Dialog(NewContractorActivity.this);

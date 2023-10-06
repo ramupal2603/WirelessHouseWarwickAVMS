@@ -194,13 +194,12 @@ public class PatientVisitScreen extends BaseActivity {
     private PatientVisitorRequestModel getPatientVisitorRequestData() {
         PatientVisitorRequestModel requestModel = new PatientVisitorRequestModel();
 
-        String siteID = Prefs.getString(PreferenceKeys.SITE_ID, "0");
+
         PatientVisitorRequestParamModel requestParamModel = new PatientVisitorRequestParamModel();
         requestParamModel.setFirst_name(edtFirstName.getText().toString().trim());
         requestParamModel.setSur_name(edtSurName.getText().toString().trim());
         requestParamModel.setHere_to_visit(edtHereToVisit.getText().toString().trim());
         requestParamModel.setVehicle_registration("N/A");
-        requestParamModel.setSite_id(siteID);
         requestModel.setParam(requestParamModel);
 
         return requestModel;

@@ -24,16 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-
-
-        String siteId = Prefs.getString(PreferenceKeys.SITE_ID, "");
-
-        if (siteId != null && !siteId.isEmpty()) {
-            redirectDashboardActivity();
-        } else {
-            redirectSiteSelectionActivity();
-        }
+        redirectDashboardActivity();
     }
 
     private void redirectDashboardActivity() {
@@ -51,13 +42,4 @@ public class SplashScreenActivity extends AppCompatActivity {
         }, ConstantClass.REDIRECTION_INTERVAL);
     }
 
-    private void redirectSiteSelectionActivity() {
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                startActivity(new Intent(getApplicationContext(), SiteSelectionViewActivity.class));
-                finish();
-            }
-        }, ConstantClass.REDIRECTION_INTERVAL);
-    }
 }
