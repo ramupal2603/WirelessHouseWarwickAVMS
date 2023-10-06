@@ -143,7 +143,8 @@ public class SiteSelectionViewActivity extends BaseActivity {
 
 
         EditText sv = (EditText) dialog.findViewById(R.id.search);
-        sv.setHint("Search Site Name or scroll down");
+        sv.setHint("Select Site");
+        sv.setVisibility(View.GONE);
         sv.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

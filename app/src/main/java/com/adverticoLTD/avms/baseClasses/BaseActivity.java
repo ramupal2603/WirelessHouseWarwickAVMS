@@ -47,6 +47,7 @@ import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.network.utils.WebApiHelper;
 import com.adverticoLTD.avms.ui.Utils;
+import com.adverticoLTD.avms.ui.siteSelectionView.SiteSelectionViewActivity;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -255,12 +256,27 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             }
         };
         newTimer.start();
+
+        txtTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*startActivity(new Intent(getApplicationContext(), SiteSelectionViewActivity.class));
+                finish();*/
+            }
+        });
     }
 
     private void initCommonView() {
 
         if (txtDate != null) {
             txtDate.setText(DateTimeUtils.getCurrentDate(getApplicationContext(), "EEE, dd MMM yyyy"));
+            txtDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    /*startActivity(new Intent(getApplicationContext(), SiteSelectionViewActivity.class));
+                    finish();*/
+                }
+            });
         }
 
     }
