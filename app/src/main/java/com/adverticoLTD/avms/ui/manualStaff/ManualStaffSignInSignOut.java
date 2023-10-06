@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -50,11 +51,11 @@ public class ManualStaffSignInSignOut extends BaseActivity {
     @BindView(R.id.imgBack)
     ImageView imgBack;
 
-    @BindView(R.id.imgSignIn)
-    TextView imgSignIn;
+    @BindView(R.id.loutImgSignIn)
+    LinearLayout loutImgSignIn;
 
-    @BindView(R.id.imgSignOut)
-    TextView imgSignOut;
+    @BindView(R.id.loutImgSignOut)
+    LinearLayout loutImgSignOut;
 
     ArrayList<NameListDataModel> arrStaffList = new ArrayList<NameListDataModel>();
     String selectedStaffID = "";
@@ -145,14 +146,14 @@ public class ManualStaffSignInSignOut extends BaseActivity {
             }
         });
 
-        imgSignIn.setOnClickListener(new View.OnClickListener() {
+        loutImgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 callSignInOutMethodForManual(selectedStaffID);
             }
         });
 
-        imgSignOut.setOnClickListener(new View.OnClickListener() {
+        loutImgSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 callSignInOutMethodForManual(selectedStaffID);
@@ -249,12 +250,12 @@ public class ManualStaffSignInSignOut extends BaseActivity {
     private void getIntentData() {
         int actionType = getIntent().getIntExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, 0);
         if (actionType == ConstantClass.REQUEST_SIGN_IN) {
-            imgSignIn.setVisibility(View.VISIBLE);
-            imgSignOut.setVisibility(View.GONE);
+            loutImgSignIn.setVisibility(View.VISIBLE);
+            loutImgSignOut.setVisibility(View.GONE);
             staffStatus = ConstantClass.STAFF_SIGNED_OUT;
         } else if (actionType == ConstantClass.REQUEST_SIGN_OUT) {
-            imgSignIn.setVisibility(View.GONE);
-            imgSignOut.setVisibility(View.VISIBLE);
+            loutImgSignIn.setVisibility(View.GONE);
+            loutImgSignOut.setVisibility(View.VISIBLE);
             staffStatus = ConstantClass.STAFF_SIGNED_IN;
         }
     }
