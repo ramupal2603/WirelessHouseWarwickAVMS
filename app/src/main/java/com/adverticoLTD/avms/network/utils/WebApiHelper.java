@@ -28,6 +28,10 @@ public class WebApiHelper {
     public static final String MSG_TYPE_MARQUEE = "1";
     public static final String MSG_TYPE_DISCLAIMER = "2";
 
+    //Induction PDF
+    public static String[] pdfURL = {"http://adverticoavms.co.uk/55Colmorerow/Uploads/settings/54colmorerow.pdf",
+    };
+
     //BaseUrl of Repository
     public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
 //    public static String BASE_URL = "http://adverticoavms.co.uk/Annemariehowes/Webservice/";

@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.helpers.ConstantClass;
+import com.adverticoLTD.avms.network.utils.WebApiHelper;
 
 import butterknife.BindView;
 
@@ -27,8 +28,7 @@ public class WebViewPDFActivity extends BaseActivity {
     private WebView pdfView;
     private ProgressBar progress;
     private String removePdfTopIcon = "javascript:(function() {" + "document.querySelector('[role=\"toolbar\"]').remove();})()";
-    private String[] strArray = {"http://adverticoavms.co.uk/55Colmorerow/Uploads/settings/54colmorerow.pdf",
-    };
+
     private String strName;
 
     @Override
@@ -39,7 +39,7 @@ public class WebViewPDFActivity extends BaseActivity {
         pdfView = findViewById(R.id.pdfView);
         progress = findViewById(R.id.progress);
 
-        showPdfFile(strArray[i]);
+        showPdfFile(WebApiHelper.pdfURL[i]);
 
         btnConfirm.setOnClickListener(this::onClick);
         getData();
