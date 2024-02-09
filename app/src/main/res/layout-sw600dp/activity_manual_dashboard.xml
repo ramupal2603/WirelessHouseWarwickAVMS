@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/largeMargin"
-            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/largeMargin"
             android:orientation="vertical">
 
@@ -51,7 +51,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/visitor"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/regularTextSize" />
+                        android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -59,7 +59,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
+                        app:tint="@color/colorLowGray" />
 
                 </LinearLayout>
 
@@ -80,7 +80,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/contractor"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/regularTextSize" />
+                        android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -88,7 +88,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
+                        app:tint="@color/colorLowGray" />
 
                 </LinearLayout>
 
@@ -109,7 +109,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/staff"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/regularTextSize" />
+                        android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -117,7 +117,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
+                        app:tint="@color/colorLowGray" />
 
                 </LinearLayout>
 
@@ -127,6 +127,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/largeMargin"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -146,7 +147,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Keys"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/regularTextSize" />
+                        android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -154,7 +155,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
+                        app:tint="@color/colorLowGray" />
 
                 </LinearLayout>
 
@@ -166,7 +167,7 @@
                     android:layout_marginTop="@dimen/small_margin"
                     android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
@@ -190,11 +191,13 @@
 
                 <LinearLayout
                     android:id="@+id/loutDeliveries"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_marginLeft="@dimen/largeMargin"
                     android:layout_marginTop="@dimen/small_margin"
+                    android:layout_weight="1"
                     android:background="@drawable/btn_theme_border_color"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <com.adverticoLTD.avms.customClasses.FontTextViewBold
                         android:layout_width="match_parent"
@@ -204,7 +207,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Deliveries"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/regularTextSize" />
+                        android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -212,7 +215,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
+                        app:tint="@color/colorLowGray" />
 
                 </LinearLayout>
 
@@ -234,7 +237,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/sign_out"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/regularTextSize" />
+                        android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_15sdp"

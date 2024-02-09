@@ -35,7 +35,7 @@ public class VisitorSurnameListAdapter extends ArrayAdapter<SignedInRecordsDataM
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (SignedInRecordsDataModel arrItem : arrayListFull) {
-                    String surname = arrItem.getSur_name();
+                    String surname = arrItem.getFirst_name();
                     if (surname.toLowerCase().trim().startsWith(filterPattern)) {
                         arrSuggestionList.add(arrItem);
                     }

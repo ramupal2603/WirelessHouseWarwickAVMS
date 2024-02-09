@@ -157,7 +157,8 @@ public class ManualSignInOutView extends BaseActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 hideKeyBoard();
                 for (int i = 0; i < arrVisitorList.size(); i++) {
-                    String visitorName = String.format("%s %s", arrVisitorList.get(i).getFirst_name(), arrVisitorList.get(i).getSur_name());
+                    String visitorName = String.format("%s %s", arrVisitorList.get(i).getFirst_name(),
+                            arrVisitorList.get(i).getSur_name());
                     if (visitorName.toLowerCase().equals
                             (edtVisitorName.getText().toString().toLowerCase().trim())) {
                         selectedVisitorID = arrVisitorList.get(i).getVisitor_id();
