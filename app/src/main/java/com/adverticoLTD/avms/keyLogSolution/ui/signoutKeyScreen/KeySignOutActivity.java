@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
+import com.adverticoLTD.avms.keyLogSolution.KeyLogAdapter;
 import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseDataModel;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseModel;
@@ -45,6 +46,8 @@ import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -355,44 +358,29 @@ public class KeySignOutActivity extends BaseActivity {
         header.setText("Select Key");
         Button btn = (Button) dialog.findViewById(R.id.cancel);
         Button btnSubmit = (Button) dialog.findViewById(R.id.btnSubmit);
-        //CREATE AND SET ADAPTER TO LISTVIEW
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(KeySignOutActivity.this,
-                android.R.layout.simple_list_item_multiple_choice);
 
+
+        List<String> arrKeyList = new ArrayList<String>();
+        HashMap<String, Boolean> selectedHashMap = new HashMap<String, Boolean>();
 
         for (int i = 0; i < arrKeyRefList.size(); i++) {
-            arrayAdapter.add(arrKeyRefList.get(i).getName());
+            arrKeyList.add(arrKeyRefList.get(i).getName());
         }
-
-        lv.setAdapter(arrayAdapter);
-        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         if (!keyRefId.isEmpty()) {
             String[] arrKeyRefId = keyRefId.split(",");
             for (int i = 0; i < arrKeyRefList.size(); i++) {
                 for (String selectedID : arrKeyRefId) {
                     if (arrKeyRefList.get(i).getId().equals(selectedID)) {
-                        lv.setItemChecked(i, true);
+                        selectedHashMap.put(arrKeyRefList.get(i).getName(), true);
                     }
                 }
             }
         }
-        //SEARCH
-        /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String strName = parent.getItemAtPosition(position).toString();
 
-                for (int i = 0; i < arrKeyRefList.size(); i++) {
-                    if (arrKeyRefList.get(i).getName().equalsIgnoreCase(strName)) {
-                        txtSelectedKey.setText(arrKeyRefList.get(i).getName());
-                        keyRefId = arrKeyRefList.get(i).getId();
-                        break;
-                    }
-                }
-                dialog.dismiss();
-            }
-        });*/
+        KeyLogAdapter searchableAdapter = new KeyLogAdapter(KeySignOutActivity.this, arrKeyList, selectedHashMap);
+        lv.setAdapter(searchableAdapter);
+
 
         EditText sv = (EditText) dialog.findViewById(R.id.search);
         sv.setHint("Search Key Name or scroll down");
@@ -404,7 +392,7 @@ public class KeySignOutActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                arrayAdapter.getFilter().filter(s.toString());
+                searchableAdapter.getFilter().filter(s.toString());
 
             }
 
@@ -424,12 +412,11 @@ public class KeySignOutActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SparseBooleanArray sparseBooleanArray = lv.getCheckedItemPositions();
                 StringBuilder selectedIDs = new StringBuilder();
                 ArrayList<String> arrSelectedName = new ArrayList<>();
 
                 for (int i = 0; i < arrKeyRefList.size(); i++) {
-                    if (sparseBooleanArray.get(i)) {
+                    if (selectedHashMap.containsKey(arrKeyList.get(i)) && selectedHashMap.get(arrKeyList.get(i))) {
                         arrSelectedName.add(arrKeyRefList.get(i).getName());
                         selectedIDs.append(arrKeyRefList.get(i).getId()).append(",");
                     }
@@ -624,6 +611,7 @@ public class KeySignOutActivity extends BaseActivity {
         Intent intent = new Intent(KeySignOutActivity.this, ThankYouActivity.class);
         intent.putExtra(ConstantClass.EXTRA_IS_FROM, ConstantClass.SIGN_OUT);
         startActivity(intent);
+        setResult(RESULT_OK);
         finish();
     }
 

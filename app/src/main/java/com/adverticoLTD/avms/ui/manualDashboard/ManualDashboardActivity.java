@@ -15,6 +15,7 @@ import com.adverticoLTD.avms.ui.contractorView.contractorTypeScreen.ContractorTy
 import com.adverticoLTD.avms.ui.contractorView.newContractorScreen.NewContractorActivity;
 import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
 import com.adverticoLTD.avms.ui.deliveries.DeliverySelectionScreen;
+import com.adverticoLTD.avms.ui.manualStaff.ManualStaffSignInSignOut;
 import com.adverticoLTD.avms.ui.manualStaff.SelectionActivity;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
 import com.adverticoLTD.avms.ui.patientVisitScreen.PatientVisitScreen;
@@ -94,8 +95,11 @@ public class ManualDashboardActivity extends BaseActivity {
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_VISITOR);
         }
         if (view == loutStaffScreen) {
-            Intent intent = new Intent(ManualDashboardActivity.this, SelectionActivity.class);
-            startActivity(intent);
+           /* Intent intent = new Intent(ManualDashboardActivity.this, SelectionActivity.class);
+            startActivity(intent);*/
+            Intent intent = new Intent(getActivity(), ManualStaffSignInSignOut.class);
+            intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, ConstantClass.REQUEST_SIGN_IN);
+            startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_STAFF);
         }
         if (view == loutPatientVisit) {
             Intent intent = new Intent(ManualDashboardActivity.this, PatientVisitScreen.class);

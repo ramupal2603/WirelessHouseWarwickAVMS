@@ -13,6 +13,7 @@ import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.ui.contractorView.existingContractorScreen.ExistingContractorActivity;
 import com.adverticoLTD.avms.ui.contractorView.newContractorScreen.NewContractorActivity;
 import com.adverticoLTD.avms.ui.manualDashboard.ManualSignInOutView;
+import com.adverticoLTD.avms.ui.manualStaff.ManualStaffSignInSignOut;
 
 import butterknife.BindView;
 
@@ -24,12 +25,16 @@ public class UserTypeActivity extends BaseActivity {
     @BindView(R.id.txtNewContractor)
     TextView txtNewContractor;
 
+    @BindView(R.id.txtStaffSignOut)
+    TextView txtStaffSignOut;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         txtVisitor.setOnClickListener(this::onClick);
         txtNewContractor.setOnClickListener(this::onClick);
+        txtStaffSignOut.setOnClickListener(this::onClick);
 
     }
 
@@ -49,6 +54,12 @@ public class UserTypeActivity extends BaseActivity {
         if (view == txtVisitor) {
             Intent intent = new Intent(UserTypeActivity.this, ManualSignInOutView.class);
             intent.putExtra(ConstantClass.EXTRAA_USER_TYPE,ConstantClass.VISITOR_TYPE);
+            startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
+        }
+
+        if (view == txtStaffSignOut) {
+            Intent intent = new Intent(UserTypeActivity.this, ManualStaffSignInSignOut.class);
+            intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, ConstantClass.REQUEST_SIGN_OUT);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
         }
     }

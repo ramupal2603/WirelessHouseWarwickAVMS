@@ -10,7 +10,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 
+import androidx.annotation.Nullable;
+
 import com.adverticoLTD.avms.R;
+import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.keyLogSolution.ui.signInKeyScreen.SignInKeyActivity;
 import com.adverticoLTD.avms.keyLogSolution.ui.signoutKeyScreen.KeySignOutActivity;
@@ -69,10 +72,20 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     private void signOutKeyAction() {
-        startActivity(new Intent(WelcomeActivity.this, KeySignOutActivity.class));
+        startActivityForResult(new Intent(WelcomeActivity.this, KeySignOutActivity.class), ConstantClass.REQUEST_NORMAL_CONTRACTOR);
     }
 
     private void signInKeyAction() {
-        startActivity(new Intent(WelcomeActivity.this, SignInKeyActivity.class));
+        startActivityForResult(new Intent(WelcomeActivity.this, SignInKeyActivity.class), ConstantClass.REQUEST_NORMAL_CONTRACTOR);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ConstantClass.REQUEST_NORMAL_CONTRACTOR && resultCode == RESULT_OK) {
+            setResult(RESULT_OK);
+            finish();
+
+        }
     }
 }

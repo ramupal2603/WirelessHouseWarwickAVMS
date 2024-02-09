@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.helpers.DateTimeUtils;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
+import com.adverticoLTD.avms.keyLogSolution.KeyLogAdapter;
 import com.adverticoLTD.avms.keyLogSolution.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseDataModel;
 import com.adverticoLTD.avms.keyLogSolution.data.keyRefList.KeyResponseModel;
@@ -39,11 +40,14 @@ import com.adverticoLTD.avms.keyLogSolution.network.ApiService;
 import com.adverticoLTD.avms.keyLogSolution.network.RetrofitClient;
 import com.adverticoLTD.avms.keyLogSolution.network.utils.UploadImageHelpers;
 import com.adverticoLTD.avms.keyLogSolution.ui.signatureView.SignatureViewActivity;
+import com.adverticoLTD.avms.keyLogSolution.ui.signoutKeyScreen.KeySignOutActivity;
 import com.adverticoLTD.avms.keyLogSolution.ui.thankyouScreen.ThankYouActivity;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import okhttp3.MultipartBody;
@@ -170,13 +174,13 @@ public class SignInKeyActivity extends BaseActivity {
         header.setText("Select Key");
         Button btn = (Button) dialog.findViewById(R.id.cancel);
         Button btnSubmit = (Button) dialog.findViewById(R.id.btnSubmit);
-        //CREATE AND SET ADAPTER TO LISTVIEW
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(SignInKeyActivity.this,
-                android.R.layout.simple_list_item_multiple_choice);
 
+
+        List<String> arrKeyList = new ArrayList<String>();
+        HashMap<String, Boolean> selectedHashMap = new HashMap<String, Boolean>();
 
         for (int i = 0; i < arrKeyRefList.size(); i++) {
-            arrayAdapter.add(arrKeyRefList.get(i).getName());
+            arrKeyList.add(arrKeyRefList.get(i).getName());
         }
 
         if (!keyRefId.isEmpty()) {
@@ -184,30 +188,15 @@ public class SignInKeyActivity extends BaseActivity {
             for (int i = 0; i < arrKeyRefList.size(); i++) {
                 for (String selectedID : arrKeyRefId) {
                     if (arrKeyRefList.get(i).getId().equals(selectedID)) {
-                        lv.setItemChecked(i, true);
+                        selectedHashMap.put(arrKeyRefList.get(i).getName(), true);
                     }
                 }
             }
         }
 
-        lv.setAdapter(arrayAdapter);
-        lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        //SEARCH
-        /*lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String strName = parent.getItemAtPosition(position).toString();
+        KeyLogAdapter searchableAdapter = new KeyLogAdapter(SignInKeyActivity.this, arrKeyList, selectedHashMap);
+        lv.setAdapter(searchableAdapter);
 
-                for (int i = 0; i < arrKeyRefList.size(); i++) {
-                    if (arrKeyRefList.get(i).getName().equalsIgnoreCase(strName)) {
-                        txtSelectedKey.setText(arrKeyRefList.get(i).getName());
-                        keyRefId = arrKeyRefList.get(i).getId();
-                        break;
-                    }
-                }
-                dialog.dismiss();
-            }
-        });*/
 
         EditText sv = (EditText) dialog.findViewById(R.id.search);
         sv.setHint("Search Key Name or scroll down");
@@ -219,7 +208,7 @@ public class SignInKeyActivity extends BaseActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                arrayAdapter.getFilter().filter(s.toString());
+                searchableAdapter.getFilter().filter(s.toString());
 
             }
 
@@ -236,23 +225,26 @@ public class SignInKeyActivity extends BaseActivity {
                 dialog.dismiss();
             }
         });
-
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SparseBooleanArray sparseBooleanArray = lv.getCheckedItemPositions();
                 StringBuilder selectedIDs = new StringBuilder();
                 ArrayList<String> arrSelectedName = new ArrayList<>();
 
                 for (int i = 0; i < arrKeyRefList.size(); i++) {
-                    if (sparseBooleanArray.get(i)) {
+                    if (selectedHashMap.containsKey(arrKeyList.get(i)) && selectedHashMap.get(arrKeyList.get(i))) {
                         arrSelectedName.add(arrKeyRefList.get(i).getName());
                         selectedIDs.append(arrKeyRefList.get(i).getId()).append(",");
                     }
                 }
 
                 keyRefId = selectedIDs.toString();
-                txtSelectedKey.setText(arrSelectedName.toString());
+                if (arrSelectedName.isEmpty()) {
+                    txtSelectedKey.setText("");
+                } else {
+                    txtSelectedKey.setText(arrSelectedName.toString());
+                }
+
                 dialog.dismiss();
 
             }
@@ -535,6 +527,7 @@ public class SignInKeyActivity extends BaseActivity {
         Intent intent = new Intent(SignInKeyActivity.this, ThankYouActivity.class);
         intent.putExtra(ConstantClass.EXTRA_IS_FROM, ConstantClass.SIGN_IN);
         startActivity(intent);
+        setResult(RESULT_OK);
         finish();
     }
 

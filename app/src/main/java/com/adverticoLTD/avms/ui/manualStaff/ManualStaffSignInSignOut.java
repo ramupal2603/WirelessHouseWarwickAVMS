@@ -198,6 +198,7 @@ public class ManualStaffSignInSignOut extends BaseActivity {
                             intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, responseModel.getData().getName());
                             intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
                             startActivity(intent);
+                            setResult(RESULT_OK);
                             finish();
 
                         } else if (responseModel.getStatus().equals(ConstantClass.RESPONSE_SUCCESS_SIGN_OUT)) {
@@ -206,6 +207,7 @@ public class ManualStaffSignInSignOut extends BaseActivity {
                             intent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, responseModel.getData().getName());
                             intent.putExtra(ConstantClass.EXTRAA_VIEW_SCAN_STATUS, responseModel.getStatus());
                             startActivity(intent);
+                            setResult(RESULT_OK);
                             finish();
 
                         } else {

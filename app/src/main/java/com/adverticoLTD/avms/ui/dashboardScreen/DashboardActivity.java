@@ -124,6 +124,7 @@ public class DashboardActivity extends BaseActivity {
         loutSignOut.setOnClickListener(this::onClick);
 
         setUpDateTimeColor();
+
     }
 
     private void setUpDateTimeColor() {
