@@ -10,6 +10,25 @@ public class NormalContractorRequestParamModel {
     String visitor_organization;
     String staff_id;
     String visitor_type;
+    String signature;
+    String description;
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
     public String getVisitor_type() {
         return visitor_type;

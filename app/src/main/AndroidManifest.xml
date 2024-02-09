@@ -205,6 +205,8 @@
         <activity
             android:name=".ui.manualDashboard.ManualSignInOutView"
             android:screenOrientation="landscape" />
+        <activity android:name=".ui.contractorView.newContractorScreen.WebViewPDFActivity" />
+        <activity android:name=".ui.contractorView.newContractorScreen.DeclarationActivity" />
 
 
         <!--<service android:name="com.adverticoLTD.avms.firebasePushNotification.MyFireBaseMessagingService">

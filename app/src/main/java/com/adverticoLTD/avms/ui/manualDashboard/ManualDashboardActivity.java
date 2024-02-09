@@ -12,6 +12,8 @@ import com.adverticoLTD.avms.baseClasses.BaseActivity;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.keyLogSolution.ui.welcomeScreen.WelcomeActivity;
 import com.adverticoLTD.avms.ui.contractorView.contractorTypeScreen.ContractorTypeActivity;
+import com.adverticoLTD.avms.ui.contractorView.newContractorScreen.NewContractorActivity;
+import com.adverticoLTD.avms.ui.dashboardScreen.DashboardActivity;
 import com.adverticoLTD.avms.ui.deliveries.DeliverySelectionScreen;
 import com.adverticoLTD.avms.ui.manualStaff.SelectionActivity;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
@@ -76,7 +78,7 @@ public class ManualDashboardActivity extends BaseActivity {
         }
 
         if (view == loutContractorScreen) {
-            Intent intent = new Intent(ManualDashboardActivity.this, ContractorTypeActivity.class);
+            Intent intent = new Intent(ManualDashboardActivity.this, NewContractorActivity.class);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
         }
         if (view == loutKeyLog) {

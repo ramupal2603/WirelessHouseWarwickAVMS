@@ -184,15 +184,35 @@ public class NewContractorActivity extends BaseActivity {
         } else if (StringUtils.checkEmptyEditText(edtStaff)) {
             showAlertDialog(getContext(), getString(R.string.error_staff));
         } else {
-            callInsertNormalContractor();
+
+            String userName = edtFirstName.getText().toString().trim() + " " + edtSurName.getText().toString().trim();
+            Intent contractorIntent = new Intent(NewContractorActivity.this, WebViewPDFActivity.class);
+            contractorIntent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, userName);
+            startActivityForResult(contractorIntent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
+
+
         }
     }
 
-    private void callInsertNormalContractor() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ConstantClass.REQUEST_NORMAL_CONTRACTOR && resultCode == RESULT_OK) {
+            if (data != null) {
+                String descriptionOfWork = data.getStringExtra(ConstantClass.EXTRAA_DESCRIPTION_WORK);
+                String imagePath = data.getStringExtra(ConstantClass.EXTRAA_SIGNATURE);
+                callInsertNormalContractor(descriptionOfWork, imagePath);
+            }
+
+
+        }
+    }
+
+    private void callInsertNormalContractor(String descriptionOfWork, String imagePath) {
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.insertUser(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(), getNormalContractorRequest()).enqueue(new Callback<NormalContractorResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getNormalContractorRequest(descriptionOfWork, imagePath)).enqueue(new Callback<NormalContractorResponseModel>() {
             @Override
             public void onResponse(Call<NormalContractorResponseModel> call, Response<NormalContractorResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -235,7 +255,7 @@ public class NewContractorActivity extends BaseActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    callInsertNormalContractor();
+                    callInsertNormalContractor(descriptionOfWork, imagePath);
 
                 }
                 hideProgressBar();
@@ -250,7 +270,7 @@ public class NewContractorActivity extends BaseActivity {
 
     }
 
-    private NormalContractorRequestModel getNormalContractorRequest() {
+    private NormalContractorRequestModel getNormalContractorRequest(String descriptionOfWork, String imagePath) {
         NormalContractorRequestModel requestModel = new NormalContractorRequestModel();
         NormalContractorRequestParamModel normalContractorRequestParamModel = new NormalContractorRequestParamModel();
         normalContractorRequestParamModel.setCompany_id(selectedCompanyID);
@@ -260,6 +280,8 @@ public class NewContractorActivity extends BaseActivity {
         normalContractorRequestParamModel.setVisitor_organization(edtOrganization.getText().toString().trim());
         normalContractorRequestParamModel.setVisitor_type("4");
         normalContractorRequestParamModel.setStaff_id(selectedStaffID);
+        normalContractorRequestParamModel.setDescription(descriptionOfWork);
+        normalContractorRequestParamModel.setSignature(imagePath);
         requestModel.setParam(normalContractorRequestParamModel);
         return requestModel;
     }

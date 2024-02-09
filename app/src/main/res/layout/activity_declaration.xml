@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_image_inner"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+
+    <include layout="@layout/layout_common_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/largeMargin"
+        android:layout_marginRight="@dimen/largeMargin"
+        android:layout_weight="0.70"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_height="wrap_content">
+
+
+
+            <EditText
+                android:id="@+id/edtFirstName"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_weight="0.50"
+                android:background="@drawable/edt_background"
+                android:hint="Firstname"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:padding="@dimen/largeMargin"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/smallTextSize" />
+
+
+
+            <View
+                android:layout_width="15dp"
+                android:layout_height="5dp"/>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_weight="0.50"
+                android:layout_marginRight="@dimen/space_20"
+                android:background="@drawable/edt_background">
+
+
+                <com.adverticoLTD.avms.customClasses.FontsTextView
+                    android:id="@+id/txtSignature"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/largeMargin"
+                    android:text="Signature"
+                    android:visibility="gone"
+                    android:textColor="@color/darkGrayColor"
+                    android:textSize="@dimen/normalTextSize" />
+
+
+                <EditText
+                    android:id="@+id/edtSignature"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edtTextHeight"
+                    android:background="@drawable/edt_background"
+                    android:hint="Signature"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"
+                    android:padding="@dimen/largeMargin"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/smallTextSize" />
+
+
+                <ImageView
+                    android:id="@+id/imgSignature"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp" />
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edtDescriptionWork"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_marginLeft="@dimen/common_margin"
+                android:layout_weight="0.50"
+                android:background="@drawable/edt_background"
+                android:hint="Description of work"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:visibility="gone"
+                android:padding="@dimen/largeMargin"
+                android:textSize="@dimen/smallTextSize" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_margin"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <CheckBox
+                    android:id="@+id/chkTermsCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/ic_check_selector"
+                    android:gravity="center_vertical" />
+
+                <com.adverticoLTD.avms.customClasses.FontTextViewBold
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/common_margin"
+                    android:text="I have read and understood the terms and conditions stated in the Contractor Induction form"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_9sdp" />
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin">
+
+
+            <RelativeLayout
+                android:id="@+id/loutBackBtn"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_weight="0.50"
+                android:visibility="visible"
+                android:layout_marginRight="@dimen/space_20"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/backbtn"
+                    android:layout_centerVertical="true"
+                    android:layout_height="wrap_content"/>
+
+
+            </RelativeLayout>
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/loutSubmit"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/edtTextHeight"
+                android:layout_marginRight="@dimen/space_20"
+                android:background="@drawable/btn_sign_out_border_color"
+                android:layout_weight="0.50">
+
+                <com.adverticoLTD.avms.customClasses.FontTextViewBold
+                    android:layout_width="match_parent"
+                    android:text="Submit"
+                    android:textSize="@dimen/largeTextSize"
+                    android:textColor="@color/whiteColor"
+                    android:gravity="center|start"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:layout_height="match_parent"/>
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_common_footer" />
+
+</LinearLayout>

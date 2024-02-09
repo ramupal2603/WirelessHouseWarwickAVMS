@@ -39,4 +39,8 @@ public class ConstantClass {
     public static final String STAFF_SIGNED_IN = "1";
     public static final String STAFF_SIGNED_OUT = "2";
     public static final String EXTRAA_SIGN_IN_OUT = "EXTRAA_SIGN_IN_OUT";
+
+    public static final String EXTRAA_DESCRIPTION_WORK = "EXTRAA_DESCRIPTION_WORK";
+    public static final String EXTRAA_SIGNATURE = "EXTRAA_SIGNATURE";
+    public static final int REQUEST_SIGN_OUT_SIGNATURE = 1001;
 }

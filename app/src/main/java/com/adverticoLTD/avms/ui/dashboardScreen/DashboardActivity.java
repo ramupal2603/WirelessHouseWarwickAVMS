@@ -40,6 +40,7 @@ import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.network.utils.WebApiHelper;
 import com.adverticoLTD.avms.ui.Utils;
 import com.adverticoLTD.avms.ui.contractorView.contractorTypeScreen.ContractorTypeActivity;
+import com.adverticoLTD.avms.ui.contractorView.newContractorScreen.NewContractorActivity;
 import com.adverticoLTD.avms.ui.manualDashboard.ManualDashboardActivity;
 import com.adverticoLTD.avms.ui.normalVisitorScreen.NormalVisitorScreen;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
@@ -282,7 +283,7 @@ public class DashboardActivity extends BaseActivity {
         }
 
         if (view == loutContractorScreen) {
-            Intent intent = new Intent(DashboardActivity.this, ContractorTypeActivity.class);
+            Intent intent = new Intent(DashboardActivity.this, NewContractorActivity.class);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
         }
         if (view == loutKeyLog) {
