@@ -15,7 +15,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "boolean", "allowBadgePrint", "false"
+            buildConfigField "boolean", "allowBadgePrint", "true"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
