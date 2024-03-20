@@ -653,6 +653,7 @@
     <string name="sign_out">Sign Out</string>
     <string name="no_qr_code_text">If you do not have a QR Code please , </string>
     <string name="error_here_to_visit">Enter Here To Visit Patient Name.</string>
+    <string name="no_record_found">No Records Found.</string>
 
     <string name="key_validation_msg">Please select key ref</string>
     <string name="staff_validation_msg">Please enter Authorised Staff</string>

@@ -104,7 +104,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:text="No Visitors Found !!"
+                android:text="@string/no_record_found"
                 android:textColor="@color/whiteColor"
                 android:textSize="@dimen/largeTextSize"
                 android:visibility="gone" />
