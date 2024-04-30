@@ -79,7 +79,7 @@ public class ManualDashboardActivity extends BaseActivity {
         }
 
         if (view == loutContractorScreen) {
-            Intent intent = new Intent(ManualDashboardActivity.this, NewContractorActivity.class);
+            Intent intent = new Intent(ManualDashboardActivity.this, ContractorTypeActivity.class);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
         }
         if (view == loutKeyLog) {
