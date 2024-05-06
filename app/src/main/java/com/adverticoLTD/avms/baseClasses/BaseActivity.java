@@ -101,20 +101,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     String disclaimerMessage = "";
     String marqueeMessage = "";
 
-    public String gdprMessage = "<p><b>WELCOME TO CARDINAL SQUARE</b></p>\n" +
-            "<p><br />WHILST ON OUR PREMISES THE FOLLOWING REGULATIONS MUST BE OBSERVED</p>\n" +
-            "<p><br />&bull; <b>HEALTH &amp; SAFETY</b><br />All visitors are subject to the Health &amp; Safety at Work Act 1974 and other site regulations</p>\n" +
-            "<p>&bull; <b>FIRE &amp; EMERGENCY</b><br />In the case of emergency, all Visitors must accompany their Host and report to Assembly Point.<br />DO NOT USE THE LIFTS.</p>\n" +
-            "<p>&bull; <b>PACKAGES</b><br />Packages and Cases must not be left unattended.</p>\n" +
-            "<p>&bull; <b>SMOKING</b><br />It is against the law to smoke on these premises</p>\n" +
-            "<p>&bull; <b>PROPERTY</b><br />The company accepts no responsibility for any loss or damage to visitor&rsquo;s property</p>\n" +
-            "<p><br />PLEASE SIGN OUT BEFORE LEAVING THE PREMISES</p>" +
-            "<br /><b>GDPR Compliance Message</b>\n" +
-            "<br /><br />• We collect basic information for the purposes of Health and Safety, and for archiving.\n" +
-            "<br /><br />• We are required to know who is present on our premises in case of an emergency evacuation.\n" +
-            "<br /><br />• We are required to know who has been present on our premises for our own information.\n" +
-            "<br /><br />• Your details are kept archived and encrypted on our premises and on UK based cloud servers for backup.";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,6 +120,20 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             setDisclaimerMessage("");
         }
     }
+
+    public String gdprMessage = "<p><b>WELCOME TO 9 COLMOREROW</b></p>\n" +
+            "<p><br />WHILST ON OUR PREMISES THE FOLLOWING REGULATIONS MUST BE OBSERVED</p>\n" +
+            "<p><br />&bull; <b>HEALTH &amp; SAFETY</b><br />All visitors are subject to the Health &amp; Safety at Work Act 1974 and other site regulations</p>\n" +
+            "<p>&bull; <b>FIRE &amp; EMERGENCY</b><br />In the case of emergency, all Visitors must accompany their Host and report to Assembly Point.<br />DO NOT USE THE LIFTS.</p>\n" +
+            "<p>&bull; <b>PACKAGES</b><br />Packages and Cases must not be left unattended.</p>\n" +
+            "<p>&bull; <b>SMOKING</b><br />It is against the law to smoke on these premises</p>\n" +
+            "<p>&bull; <b>PROPERTY</b><br />The company accepts no responsibility for any loss or damage to visitor&rsquo;s property</p>\n" +
+            "<p><br />PLEASE SIGN OUT BEFORE LEAVING THE PREMISES</p>" +
+            "<br /><b>GDPR Compliance Message</b>\n" +
+            "<br /><br />• We collect basic information for the purposes of Health and Safety, and for archiving.\n" +
+            "<br /><br />• We are required to know who is present on our premises in case of an emergency evacuation.\n" +
+            "<br /><br />• We are required to know who has been present on our premises for our own information.\n" +
+            "<br /><br />• Your details are kept archived and encrypted on our premises and on UK based cloud servers for backup.";
 
 
     public void getAccessKeyToken() {
