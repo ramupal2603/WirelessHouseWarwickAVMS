@@ -248,6 +248,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                 if (txtTime != null) {
                     txtTime.setText(String.format("%s", DateTimeUtils.getCurrentTime(getContext())));
                 }
+
+                if (txtDate != null) {
+                    txtDate.setText(DateTimeUtils.getCurrentDate(getApplicationContext(), DateTimeUtils.dashboardDateFormat));
+                }
             }
 
             public void onFinish() {
@@ -268,7 +272,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     private void initCommonView() {
 
         if (txtDate != null) {
-            txtDate.setText(DateTimeUtils.getCurrentDate(getApplicationContext(), "EEE, dd MMM yyyy"));
+            txtDate.setText(DateTimeUtils.getCurrentDate(getApplicationContext(), DateTimeUtils.dashboardDateFormat));
             txtDate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

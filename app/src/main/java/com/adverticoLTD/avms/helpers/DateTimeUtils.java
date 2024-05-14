@@ -11,6 +11,9 @@ import java.util.Locale;
 
 public class DateTimeUtils {
 
+    public static String dashboardDateFormat = "EEE, dd MMM yyyy";
+
+
     public static String getCurrentDateHeader() {
 
         Calendar c = Calendar.getInstance();
