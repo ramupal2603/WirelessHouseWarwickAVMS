@@ -32,7 +32,7 @@
                 android:layout_marginTop="@dimen/common_margin"
                 android:gravity="center"
                 android:text="Thank You"
-                android:textColor="@color/whiteColor"
+                android:textColor="@color/colorBlack"
                 android:textStyle="bold"
                 android:textSize="@dimen/extraLargeTextSize" />
 
@@ -44,7 +44,7 @@
                 android:gravity="center"
                 android:text="Ramu Pal"
                 android:visibility="visible"
-                android:textColor="@color/whiteColor"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/mediumTextSize" />
 
             <com.adverticoLTD.avms.customClasses.FontsTextView
@@ -54,7 +54,7 @@
                 android:layout_marginTop="@dimen/common_margin"
                 android:gravity="center"
                 android:text="you are now signed in"
-                android:textColor="@color/whiteColor"
+                android:textColor="@color/colorBlack"
                 android:textSize="@dimen/mediumTextSize" />
 
 

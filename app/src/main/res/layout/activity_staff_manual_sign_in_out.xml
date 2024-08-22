@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Please enter your name"
-            android:textColor="@color/whiteColor"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/regularTextSize" />
 
         <LinearLayout

@@ -126,6 +126,7 @@ public class ManualStaffSignInSignOut extends BaseActivity {
 
         StaffSignRequestModel requestModel = new StaffSignRequestModel();
         StaffSignParamModel staffSignParamModel = new StaffSignParamModel();
+        staffSignParamModel.setUser_type(ConstantClass.STAFF_USER_TYPE);
         staffSignParamModel.setStaff_status(staffStatus);
         requestModel.setParam(staffSignParamModel);
         return requestModel;

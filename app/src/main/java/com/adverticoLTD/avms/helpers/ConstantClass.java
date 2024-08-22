@@ -9,6 +9,7 @@ public class ConstantClass {
     public static final String RESPONSE_SUCCESS = "1";
     public static final String RESPONSE_SUCCESS_SIGN_IN = "1";
     public static final String RESPONSE_SUCCESS_SIGN_OUT = "2";
+    public static final String STAFF_USER_TYPE = "3";
 
     public static final long MILIS_UNTIL_FINISH = 6000;
     public static final long COUNTDOWN_INTERVAL = 1000;

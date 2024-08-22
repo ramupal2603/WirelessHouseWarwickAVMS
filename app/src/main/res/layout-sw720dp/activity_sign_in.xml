@@ -229,14 +229,14 @@
                                 android:id="@+id/backLayout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/space_10"
-                                android:layout_marginLeft="@dimen/space_20"
-                                android:background="@drawable/backbtn"
-                                android:layout_centerVertical="true"
                                 android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="@dimen/space_20"
+                                android:layout_marginTop="@dimen/space_10"
+                                android:background="@drawable/ic_back_btn"
                                 android:gravity="center"
                                 android:orientation="horizontal"
-                                android:padding="@dimen/space_10"/>
+                                android:padding="@dimen/space_10" />
 
 
                             <LinearLayout

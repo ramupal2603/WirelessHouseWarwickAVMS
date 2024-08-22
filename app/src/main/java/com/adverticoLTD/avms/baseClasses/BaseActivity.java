@@ -97,6 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     TextView next;
 
     CountDownTimer newTimer;
+    CountDownTimer keyboardTimer;
 
     String disclaimerMessage = "";
     String marqueeMessage = "";
@@ -121,7 +122,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public String gdprMessage = "<p><b>WELCOME TO 9 COLMOREROW</b></p>\n" +
+    public String gdprMessage = "<p><b>WELCOME TO QUORUM BUSINESS PARK</b></p>\n" +
             "<p><br />WHILST ON OUR PREMISES THE FOLLOWING REGULATIONS MUST BE OBSERVED</p>\n" +
             "<p><br />&bull; <b>HEALTH &amp; SAFETY</b><br />All visitors are subject to the Health &amp; Safety at Work Act 1974 and other site regulations</p>\n" +
             "<p>&bull; <b>FIRE &amp; EMERGENCY</b><br />In the case of emergency, all Visitors must accompany their Host and report to Assembly Point.<br />DO NOT USE THE LIFTS.</p>\n" +
@@ -240,6 +241,31 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     void onNextPressed() {
         hideKeyBoard();
     }
+
+    public void edtTextHideKeyboard() {
+
+        keyboardTimer = new CountDownTimer(ConstantClass.AUTO_HIDE_KEYBOARD_TIMER, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            public void onFinish() {
+                hideKeyBoard();
+            }
+        };
+        keyboardTimer.start();
+
+    }
+
+    public void cancelEdtTextTimer() {
+
+        if (keyboardTimer != null) {
+            keyboardTimer.cancel();
+        }
+
+    }
+
 
     private void showTime() {
         newTimer = new CountDownTimer(1000000000, 1000) {
@@ -380,6 +406,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
 
     }
+
+
 
     public void showNoSitesMessage() {
         showToastMessage(getActivity().getResources().getString(R.string.no_site_msg));

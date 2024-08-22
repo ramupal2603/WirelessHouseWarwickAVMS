@@ -33,7 +33,7 @@ public class WebApiHelper {
 
     //BaseUrl of Repository
    // public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
-    public static String BASE_URL = "https://adverticoavms.co.uk/9Colmorerow/Webservice/";
+    public static String BASE_URL = "http://www.adverticoavms.co.uk/Q16QuorumBusinessPark/Webservice/";
 
 
 }

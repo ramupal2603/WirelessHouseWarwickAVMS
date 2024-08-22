@@ -26,9 +26,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/largeMargin"
+
             android:text="Please enter your ID"
-            android:textColor="@color/whiteColor"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/regularTextSize" />
 
         <LinearLayout

@@ -91,6 +91,24 @@ public class DeliveriesActivity extends BaseActivity {
         loutCompanyView.setOnClickListener(this::onClick);
         imgSignIn.setOnClickListener(this::onClick);
         loutSendDeliveryEmail.setOnClickListener(this::onClick);
+
+
+        edtCourierName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                cancelEdtTextTimer();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                edtTextHideKeyboard();
+            }
+        });
     }
 
     @Override
@@ -98,10 +116,12 @@ public class DeliveriesActivity extends BaseActivity {
 
 
         if (view == loutCompanyView || view == edtCompany) {
+            edtCourierName.clearFocus();
             getCompaniesList();
         }
 
         if (view == loutStaffView || view == edtStaff) {
+            edtCourierName.clearFocus();
             if (!selectedCompanyID.equals("-1")) {
                 getStaffList();
             } else {
@@ -111,6 +131,7 @@ public class DeliveriesActivity extends BaseActivity {
         }
 
         if (view == imgSignIn || view == loutSendDeliveryEmail) {
+            edtCourierName.clearFocus();
             validateDeliveriesModule();
         }
 
