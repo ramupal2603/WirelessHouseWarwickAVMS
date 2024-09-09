@@ -50,7 +50,7 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/visitor"
-                        android:textColor="@color/colorDarkGray"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
@@ -59,7 +59,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorLowGray" />
+                        app:tint="@color/whiteColor" />
 
                 </LinearLayout>
 
@@ -79,7 +79,7 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/contractor"
-                        android:textColor="@color/colorDarkGray"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
@@ -88,7 +88,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorLowGray" />
+                        app:tint="@color/whiteColor" />
 
                 </LinearLayout>
 
@@ -108,7 +108,7 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/staff"
-                        android:textColor="@color/colorDarkGray"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
@@ -117,7 +117,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorLowGray" />
+                        app:tint="@color/whiteColor" />
 
                 </LinearLayout>
 
@@ -146,7 +146,7 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Keys"
-                        android:textColor="@color/colorDarkGray"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
@@ -155,7 +155,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorLowGray" />
+                        app:tint="@color/whiteColor" />
 
                 </LinearLayout>
 
@@ -176,7 +176,7 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Patient Visit"
-                        android:textColor="@color/colorDarkGray"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
@@ -185,7 +185,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorDarkGray" />
+                        app:tint="@color/whiteColor" />
 
                 </LinearLayout>
 
@@ -206,7 +206,7 @@
                         android:gravity="center|start"
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Deliveries"
-                        android:textColor="@color/colorDarkGray"
+                        android:textColor="@color/whiteColor"
                         android:textSize="@dimen/mediumTextSize" />
 
                     <ImageView
@@ -215,7 +215,7 @@
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/largeMargin"
                         android:src="@drawable/ic_buttons_arrow"
-                        app:tint="@color/colorLowGray" />
+                        app:tint="@color/whiteColor" />
 
                 </LinearLayout>
 

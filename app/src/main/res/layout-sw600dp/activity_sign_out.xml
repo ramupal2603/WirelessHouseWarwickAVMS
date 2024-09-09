@@ -64,7 +64,8 @@
                                     android:hint="Firstname"
                                     android:inputType="textCapSentences|text"
                                     android:paddingLeft="@dimen/largeMargin"
-                                    android:textColor="@color/colorBlack"
+                                    android:textColorHint="@color/darkGrayColor"
+                                    android:textColor="@color/darkGrayColor"
                                     android:textSize="@dimen/normalTextSize" />
 
                             </LinearLayout>
@@ -92,7 +93,8 @@
                                         android:hint="Surname"
                                         android:inputType="textCapSentences|text"
                                         android:paddingLeft="@dimen/largeMargin"
-                                        android:textColor="@color/colorBlack"
+                                        android:textColorHint="@color/darkGrayColor"
+                                        android:textColor="@color/darkGrayColor"
                                         android:textSize="@dimen/normalTextSize" />
 
 
@@ -125,7 +127,8 @@
                                     android:gravity="center_vertical"
                                     android:hint="Company"
                                     android:paddingLeft="@dimen/largeMargin"
-                                    android:textColor="@color/colorBlack"
+                                    android:textColorHint="@color/darkGrayColor"
+                                    android:textColor="@color/darkGrayColor"
                                     android:inputType="textCapSentences|text"
                                     android:textSize="@dimen/normalTextSize" />
 
@@ -156,7 +159,8 @@
                                         android:gravity="center_vertical"
                                         android:hint="Mobile no"
                                         android:paddingLeft="@dimen/largeMargin"
-                                        android:textColor="@color/colorBlack"
+                                        android:textColorHint="@color/darkGrayColor"
+                                        android:textColor="@color/darkGrayColor"
                                         android:imeOptions="actionDone"
                                         android:inputType="phone"
                                         android:textSize="@dimen/normalTextSize" />
