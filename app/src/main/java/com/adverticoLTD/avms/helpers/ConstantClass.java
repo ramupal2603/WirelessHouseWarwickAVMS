@@ -14,6 +14,8 @@ public class ConstantClass {
     public static final long MILIS_UNTIL_FINISH = 6000;
     public static final long COUNTDOWN_INTERVAL = 1000;
 
+    public static final long PRINTER_AUTO_CONNECT_INTERVAL = 5000;
+    public static final long PRINTER_AUTO_CONNECT_RETRY_COUNTER = 5;
     public static final long REDIRECTION_INTERVAL = 3000;
     public static final long AUTO_HIDE_KEYBOARD_TIMER = 3000;
 

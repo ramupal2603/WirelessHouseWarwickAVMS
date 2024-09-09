@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.adverticoLTD.avms.BuildConfig;
 import com.adverticoLTD.avms.R;
+import com.adverticoLTD.avms.brotherPrinter.BluetoothPrinterAutoConfigActivity;
 import com.adverticoLTD.avms.brotherPrinter.PrinterSettingsActivity;
 import com.adverticoLTD.avms.helpers.ConstantClass;
 import com.adverticoLTD.avms.helpers.PreferenceKeys;
@@ -32,7 +33,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             public void run() {
                 if (BuildConfig.allowBadgePrint) {
-                    startActivity(new Intent(getApplicationContext(), PrinterSettingsActivity.class));
+                    startActivity(new Intent(getApplicationContext(), BluetoothPrinterAutoConfigActivity.class));
                 } else {
                     startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
                 }
