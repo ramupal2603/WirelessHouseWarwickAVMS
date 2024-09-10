@@ -23,11 +23,12 @@
     <color name="colorLightGray">#E9E4E4</color>
     <color name="colorText">#666666</color>
     <color name="colorPink">#FF017E</color>
-    <color name="colorSignOut">#A55C37</color>
     <color name="grayColor">#929292</color>
     <color name="colorSignOutButton">#313759</color>
     <color name="colorBgGray">#FAFAFA</color>
 
     <color name="colorLowGray">#999393</color>
 
+    <color name="colorSolidBtn">#4E5765</color>
+    <color name="colorSignOut">#A4A4A4</color>
 </resources>

@@ -183,7 +183,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/edtTextHeight"
                 android:layout_marginRight="@dimen/space_20"
-                android:background="@drawable/btn_sign_out_border_color"
+                android:background="@drawable/btn_sign_in_large_view"
                 android:layout_weight="0.50">
 
                 <com.adverticoLTD.avms.customClasses.FontTextViewBold

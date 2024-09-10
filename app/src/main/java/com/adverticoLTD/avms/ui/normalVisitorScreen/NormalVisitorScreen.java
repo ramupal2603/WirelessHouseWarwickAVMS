@@ -78,8 +78,8 @@ public class NormalVisitorScreen extends BaseActivity {
     @BindView(R.id.loutStaffView)
     LinearLayout loutStaffView;
 
-    @BindView(R.id.imgSignIn)
-    ImageView imgSignIn;
+    @BindView(R.id.loutImgSignIn)
+    LinearLayout loutImgSignIn;
 
     @BindView(R.id.next)
     TextView txtNext;
@@ -97,7 +97,7 @@ public class NormalVisitorScreen extends BaseActivity {
         loutStaffView.setOnClickListener(this::onClick);
         edtCompany.setOnClickListener(this::onClick);
         loutCompanyView.setOnClickListener(this::onClick);
-        imgSignIn.setOnClickListener(this::onClick);
+        loutImgSignIn.setOnClickListener(this::onClick);
         txtNext.setOnClickListener(this::onClick);
 
     }
@@ -123,7 +123,7 @@ public class NormalVisitorScreen extends BaseActivity {
 
         }
 
-        if (view == imgSignIn) {
+        if (view == loutImgSignIn) {
             showDisclaimerDialog();
         }
 

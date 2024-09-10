@@ -40,10 +40,10 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/edt_background"
+                    android:background="@drawable/btn_theme_border_color"
                     android:gravity="center"
                     android:text="Sign In"
-                    android:textColor="@color/colorDarkGray"
+                    android:textColor="@color/whiteColor"
                     android:textSize="42sp" />
 
                 <com.adverticoLTD.avms.customClasses.FontsTextView
@@ -52,10 +52,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/common_margin"
                     android:layout_weight="1"
-                    android:background="@drawable/edt_background"
+                    android:background="@drawable/btn_theme_border_color"
                     android:gravity="center"
                     android:text="Sign Out"
-                    android:textColor="@color/colorDarkGray"
+                    android:textColor="@color/whiteColor"
                     android:textSize="42sp" />
 
             </LinearLayout>

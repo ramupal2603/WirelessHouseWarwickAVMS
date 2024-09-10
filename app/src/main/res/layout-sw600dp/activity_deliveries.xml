@@ -145,7 +145,7 @@
                 android:layout_height="@dimen/edtTextHeight"
                 android:layout_marginLeft="@dimen/common_margin"
                 android:layout_weight="0.50"
-                android:background="@drawable/btn_sign_out_border_color">
+                android:background="@drawable/btn_sign_in_large_view">
 
                 <TextView
                     android:layout_width="0dp"

@@ -30,10 +30,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/edt_background"
+                android:background="@drawable/btn_theme_border_color"
                 android:gravity="center"
                 android:text="Existing Contractor"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/whiteColor"
                 android:textSize="@dimen/regularTextSize" />
 
             <TextView
@@ -42,10 +42,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/common_margin"
                 android:layout_weight="1"
-                android:background="@drawable/edt_background"
+                android:background="@drawable/btn_theme_border_color"
                 android:gravity="center"
                 android:text="New Contractor"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/whiteColor"
                 android:textSize="@dimen/regularTextSize" />
 
         </LinearLayout>
