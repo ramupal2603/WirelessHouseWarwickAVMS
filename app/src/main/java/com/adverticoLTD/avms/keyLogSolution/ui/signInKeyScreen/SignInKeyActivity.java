@@ -376,6 +376,7 @@ public class SignInKeyActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
         if (v == imgSignature) {
+
             Intent intent = new Intent(SignInKeyActivity.this, SignatureViewActivity.class);
             startActivityForResult(intent, REQUEST_SIGN_IN_SIGNATURE);
         }

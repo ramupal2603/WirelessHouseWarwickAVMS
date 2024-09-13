@@ -3,8 +3,8 @@
 
     <corners android:radius="@dimen/round_corner"/>
 
-    <solid android:color="@color/colorSignOutButton"/>
+    <solid android:color="@color/colorSolidBtn"/>
 
-    <stroke android:color="@color/colorSignOutButton" android:width="3dp"/>
+    <stroke android:color="@color/colorSolidBtn" android:width="3dp"/>
 
 </shape>

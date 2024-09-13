@@ -111,10 +111,12 @@ public class NormalVisitorScreen extends BaseActivity {
     @Override
     public void onClick(View view) {
         if (view == loutCompanyView || view == edtCompany) {
+            edtOrganization.clearFocus();
             getCompaniesList();
         }
 
         if (view == loutStaffView || view == edtStaff) {
+            edtOrganization.clearFocus();
             if (!selectedCompanyID.equals("-1")) {
                 getStaffList();
             } else {
@@ -124,6 +126,7 @@ public class NormalVisitorScreen extends BaseActivity {
         }
 
         if (view == loutImgSignIn) {
+            edtOrganization.clearFocus();
             showDisclaimerDialog();
         }
 

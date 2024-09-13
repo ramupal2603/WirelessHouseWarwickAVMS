@@ -111,10 +111,12 @@ public class NewContractorActivity extends BaseActivity {
     @Override
     public void onClick(View view) {
         if (view == edtCompany || view == loutCompanyView) {
+            edtOrganization.clearFocus();
             getCompaniesList();
         }
 
         if (view == edtStaff || view == loutStaffView) {
+            edtOrganization.clearFocus();
             if (!selectedCompanyID.equals("-1")) {
                 getStaffList();
             } else {
@@ -124,6 +126,7 @@ public class NewContractorActivity extends BaseActivity {
         }
 
         if (view == loutImgSignIn) {
+            edtOrganization.clearFocus();
             showDisclaimerDialog();
         }
 
