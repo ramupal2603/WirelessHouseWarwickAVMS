@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -71,8 +72,6 @@
                                     android:textSize="@dimen/normalTextSize" />
 
 
-
-
                             </LinearLayout>
 
                             <LinearLayout
@@ -117,12 +116,13 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_8sdp">
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:gravity="center">
 
                             <LinearLayout
-                                android:id="@+id/backLayout"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
@@ -137,27 +137,39 @@
 
                             </LinearLayout>
 
+
                             <LinearLayout
                                 android:id="@+id/loutSignInView"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:gravity="end"
-                                android:orientation="horizontal">
+                                android:layout_width="@dimen/_200sdp"
+                                android:layout_height="@dimen/_32sdp"
+                                android:layout_marginLeft="@dimen/common_margin"
+                                android:layout_weight="0.50"
+                                android:background="@drawable/btn_sign_in_large_view"
+                                android:visibility="visible">
+
+
+                                <com.adverticoLTD.avms.customClasses.FontsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center|start"
+                                    android:paddingLeft="@dimen/largeMargin"
+                                    android:text="Submit"
+                                    android:textColor="@color/whiteColor"
+                                    android:textSize="@dimen/largeTextSize" />
 
                                 <ImageView
-                                    android:id="@+id/imgSignIn"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_submit" />
+                                    android:layout_width="@dimen/_15sdp"
+                                    android:layout_height="@dimen/_15sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="@dimen/largeMargin"
+                                    android:src="@drawable/ic_signout_arrow"
+                                    app:tint="@color/whiteColor" />
 
                             </LinearLayout>
 
 
                         </LinearLayout>
-
 
                     </LinearLayout>
 
