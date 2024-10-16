@@ -16,6 +16,7 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginLeft="@dimen/largeMargin"
+        android:gravity="center"
         android:layout_marginTop="@dimen/common_margin"
         android:layout_marginRight="@dimen/largeMargin"
         android:layout_weight="0.70"

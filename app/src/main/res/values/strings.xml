@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Quorum Business Park</string>
+    <string name="app_name">Wireless House Warwick</string>
     <string name="clear_pad">Clear</string>
     <string name="save_signature">Save</string>
     <string name="login_bottom_title">Staff Management Version 1.0</string>
 
 
-    <string name="dashboard_welcome_text">Welcome to Q16</string>
+    <string name="dashboard_welcome_text">Welcome to Wireless House Warwick</string>
     <string name="scan_qr_code_text">Scan QR Code here</string>
 
     <string name="please_sign_in">Please sign in below. Thank you</string>

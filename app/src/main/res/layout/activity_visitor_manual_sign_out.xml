@@ -19,6 +19,7 @@
         android:layout_marginTop="@dimen/common_margin"
         android:layout_marginRight="@dimen/largeMargin"
         android:layout_weight="0.70"
+        android:gravity="center"
         android:orientation="vertical">
 
 

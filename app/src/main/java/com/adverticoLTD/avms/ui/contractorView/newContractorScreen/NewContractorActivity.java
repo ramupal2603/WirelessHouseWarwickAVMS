@@ -188,13 +188,16 @@ public class NewContractorActivity extends BaseActivity {
             showAlertDialog(getContext(), getString(R.string.error_staff));
         } else {
 
-            callInsertNormalContractor("", "");
+            String userName = edtFirstName.getText().toString().trim() + " " + edtSurName.getText().toString().trim();
+            Intent contractorIntent = new Intent(NewContractorActivity.this, WebViewPDFActivity.class);
+            contractorIntent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, userName);
+            startActivityForResult(contractorIntent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
 
 
         }
     }
 
-  /*  @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ConstantClass.REQUEST_NORMAL_CONTRACTOR && resultCode == RESULT_OK) {
@@ -206,7 +209,7 @@ public class NewContractorActivity extends BaseActivity {
 
 
         }
-    }*/
+    }
 
     private void callInsertNormalContractor(String descriptionOfWork, String imagePath) {
         showProgressBar();
