@@ -61,7 +61,7 @@
                                     android:layout_height="match_parent"
                                     android:background="@android:color/transparent"
                                     android:gravity="center_vertical"
-                                    android:hint="Firstname"
+                                    android:hint="First Name"
                                     android:inputType="textCapSentences|text"
                                     android:paddingLeft="@dimen/largeMargin"
                                     android:textColorHint="@color/darkGrayColor"

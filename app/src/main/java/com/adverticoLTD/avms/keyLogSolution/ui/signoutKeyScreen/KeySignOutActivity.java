@@ -441,6 +441,8 @@ public class KeySignOutActivity extends BaseActivity {
     public void onClick(View v) {
 
         if (v == imgSignature) {
+            hideKeyBoard();
+            edtCompany.clearFocus();
             edtMobile.clearFocus();
             Intent intent = new Intent(KeySignOutActivity.this, SignatureViewActivity.class);
             startActivityForResult(intent, REQUEST_SIGN_OUT_SIGNATURE);
@@ -451,21 +453,29 @@ public class KeySignOutActivity extends BaseActivity {
         }
 
         if (v == loutSignatureSignOutKey) {
+            hideKeyBoard();
+            edtCompany.clearFocus();
             edtMobile.clearFocus();
             doValidation();
         }
 
         if (v == loutKeyRefView) {
+            hideKeyBoard();
+            edtCompany.clearFocus();
             edtMobile.clearFocus();
             getKeyRefData();
         }
 
         if (v == loutStaffView) {
+            hideKeyBoard();
+            edtCompany.clearFocus();
             edtMobile.clearFocus();
             getStaffListData();
         }
 
         if (v == loutStaffSignatureView) {
+            hideKeyBoard();
+            edtCompany.clearFocus();
             edtMobile.clearFocus();
             Intent intent = new Intent(KeySignOutActivity.this, SignatureViewActivity.class);
             startActivityForResult(intent, REQUEST_SIGN_OUT_STAFF_SIGNATURE);

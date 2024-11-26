@@ -149,6 +149,8 @@ public class ManualStaffSignInSignOut extends BaseActivity {
         loutImgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideKeyBoard();
+                edtStaffName.clearFocus();
                 callSignInOutMethodForManual(selectedStaffID);
             }
         });
@@ -156,6 +158,8 @@ public class ManualStaffSignInSignOut extends BaseActivity {
         loutImgSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideKeyBoard();
+                edtStaffName.clearFocus();
                 callSignInOutMethodForManual(selectedStaffID);
             }
         });

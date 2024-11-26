@@ -29,10 +29,11 @@ public class WebApiHelper {
     public static final String MSG_TYPE_DISCLAIMER = "2";
 
     //Induction PDF
-    public static String[] pdfURL = {"http://adverticoavms.co.uk/Demo/Uploads/settings/induction-form.pdf",};
+    public static String[] pdfURL = {"https://adverticoavms.co.uk/WirelessHouseWarwick/Uploads/settings/FM%20handbook%20-%20Wireless%20House%20Warwick%20-%20Contractor%20Induction%20Pack.pdf",};
 
     //BaseUrl of Repository
-    public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
+    public static String BASE_URL = "https://adverticoavms.co.uk/WirelessHouseWarwick/Webservice/";
+   // public static String BASE_URL = "http://adverticoavms.co.uk/Demo/Webservice/";
 
 
 }

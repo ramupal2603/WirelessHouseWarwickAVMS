@@ -64,6 +64,7 @@ public class WebViewPDFActivity extends BaseActivity {
         pdfView.invalidate();
         pdfView.getSettings().setJavaScriptEnabled(true);
         pdfView.getSettings().setSupportZoom(true);
+        pdfView.setInitialScale(150);
         pdfView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + imageString);
         pdfView.setWebViewClient(new WebViewClient() {
             boolean checkOnPageStartedCalled = false;

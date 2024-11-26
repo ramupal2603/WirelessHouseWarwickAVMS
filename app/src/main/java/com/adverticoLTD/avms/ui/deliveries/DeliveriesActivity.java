@@ -116,11 +116,13 @@ public class DeliveriesActivity extends BaseActivity {
 
 
         if (view == loutCompanyView || view == edtCompany) {
+            hideKeyBoard();
             edtCourierName.clearFocus();
             getCompaniesList();
         }
 
         if (view == loutStaffView || view == edtStaff) {
+            hideKeyBoard();
             edtCourierName.clearFocus();
             if (!selectedCompanyID.equals("-1")) {
                 getStaffList();
@@ -131,6 +133,7 @@ public class DeliveriesActivity extends BaseActivity {
         }
 
         if (view == imgSignIn || view == loutSendDeliveryEmail) {
+            hideKeyBoard();
             edtCourierName.clearFocus();
             validateDeliveriesModule();
         }

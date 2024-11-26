@@ -148,6 +148,8 @@ public class ManualSignInOutView extends BaseActivity {
         loutImgSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideKeyBoard();
+                edtVisitorName.clearFocus();
                 scanQrCodeForSignOut(selectedVisitorID);
             }
         });
