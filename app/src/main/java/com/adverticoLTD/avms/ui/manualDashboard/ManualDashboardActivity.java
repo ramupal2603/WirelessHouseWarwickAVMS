@@ -95,9 +95,7 @@ public class ManualDashboardActivity extends BaseActivity {
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_VISITOR);
         }
         if (view == loutStaffScreen) {
-           /* Intent intent = new Intent(ManualDashboardActivity.this, SelectionActivity.class);
-            startActivity(intent);*/
-            Intent intent = new Intent(getActivity(), ManualStaffSignInSignOut.class);
+            Intent intent = new Intent(ManualDashboardActivity.this, SelectionActivity.class);
             intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, ConstantClass.REQUEST_SIGN_IN);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_STAFF);
         }

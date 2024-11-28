@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -17,14 +18,16 @@ import butterknife.BindView;
 
 public class SelectionActivity extends BaseActivity {
 
-    @BindView(R.id.txtSignIn)
-    TextView txtSignIn;
+    @BindView(R.id.loutStaffScreen)
+    LinearLayout loutStaffScreen;
 
-    @BindView(R.id.txtSignOut)
-    TextView txtSignOut;
+    @BindView(R.id.loutCoverGuards)
+    LinearLayout loutCoverGuards;
 
     @BindView(R.id.imgBack)
     ImageView imgBack;
+
+    int actionType;
 
     @Override
     protected int getLayoutResource() {
@@ -39,23 +42,27 @@ public class SelectionActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        txtSignIn.setOnClickListener(new View.OnClickListener() {
+        actionType = getIntent().getIntExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, 0);
+
+        loutStaffScreen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(getActivity(), ManualStaffSignInSignOut.class);
-                intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, ConstantClass.REQUEST_SIGN_IN);
-                startActivity(intent);
-                finish();
+                intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, actionType);
+                intent.putExtra(ConstantClass.EXTRAA_USER_TYPE, ConstantClass.CLEANER_TYPE);
+                startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_STAFF);
+
+
             }
         });
-        txtSignOut.setOnClickListener(new View.OnClickListener() {
+        loutCoverGuards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ManualStaffSignInSignOut.class);
-                intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, ConstantClass.REQUEST_SIGN_OUT);
-                startActivity(intent);
-                finish();
+                intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, actionType);
+                intent.putExtra(ConstantClass.EXTRAA_USER_TYPE, ConstantClass.COVER_GUARD_TYPE);
+                startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_STAFF);
             }
         });
 
@@ -65,5 +72,14 @@ public class SelectionActivity extends BaseActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ConstantClass.REQUEST_NORMAL_STAFF && resultCode == RESULT_OK) {
+            setResult(RESULT_OK);
+            finish();
+        }
     }
 }

@@ -60,7 +60,7 @@ public class ManualStaffSignInSignOut extends BaseActivity {
     ArrayList<NameListDataModel> arrStaffList = new ArrayList<NameListDataModel>();
     String selectedStaffID = "";
     String staffStatus = ConstantClass.STAFF_ALL;
-
+    String userType = "";
     @Override
     protected int getLayoutResource() {
         return R.layout.activity_staff_manual_sign_in_out;
@@ -126,7 +126,7 @@ public class ManualStaffSignInSignOut extends BaseActivity {
 
         StaffSignRequestModel requestModel = new StaffSignRequestModel();
         StaffSignParamModel staffSignParamModel = new StaffSignParamModel();
-        staffSignParamModel.setUser_type(ConstantClass.STAFF_USER_TYPE);
+        staffSignParamModel.setUser_type(userType);
         staffSignParamModel.setStaff_status(staffStatus);
         requestModel.setParam(staffSignParamModel);
         return requestModel;
@@ -255,6 +255,7 @@ public class ManualStaffSignInSignOut extends BaseActivity {
 
     private void getIntentData() {
         int actionType = getIntent().getIntExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, 0);
+        userType = getIntent().getStringExtra(ConstantClass.EXTRAA_USER_TYPE);
         if (actionType == ConstantClass.REQUEST_SIGN_IN) {
             loutImgSignIn.setVisibility(View.VISIBLE);
             loutImgSignOut.setVisibility(View.GONE);

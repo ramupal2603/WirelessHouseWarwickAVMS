@@ -51,7 +51,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/visitor"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/mediumTextSize" />
+                        android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -80,7 +80,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/contractor"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/mediumTextSize" />
+                        android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -109,7 +109,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/staff"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/mediumTextSize" />
+                        android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -147,7 +147,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Keys"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/mediumTextSize" />
+                        android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -207,7 +207,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="Deliveries"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/mediumTextSize" />
+                        android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_10sdp"
@@ -237,7 +237,7 @@
                         android:paddingLeft="@dimen/largeMargin"
                         android:text="@string/sign_out"
                         android:textColor="@color/whiteColor"
-                        android:textSize="@dimen/mediumTextSize" />
+                        android:textSize="@dimen/regularTextSize" />
 
                     <ImageView
                         android:layout_width="@dimen/_15sdp"

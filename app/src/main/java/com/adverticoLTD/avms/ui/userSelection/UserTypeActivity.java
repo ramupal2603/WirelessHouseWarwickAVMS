@@ -14,6 +14,7 @@ import com.adverticoLTD.avms.ui.contractorView.existingContractorScreen.Existing
 import com.adverticoLTD.avms.ui.contractorView.newContractorScreen.NewContractorActivity;
 import com.adverticoLTD.avms.ui.manualDashboard.ManualSignInOutView;
 import com.adverticoLTD.avms.ui.manualStaff.ManualStaffSignInSignOut;
+import com.adverticoLTD.avms.ui.manualStaff.SelectionActivity;
 
 import butterknife.BindView;
 
@@ -27,6 +28,7 @@ public class UserTypeActivity extends BaseActivity {
 
     @BindView(R.id.txtStaffSignOut)
     TextView txtStaffSignOut;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class UserTypeActivity extends BaseActivity {
         }
 
         if (view == txtStaffSignOut) {
-            Intent intent = new Intent(UserTypeActivity.this, ManualStaffSignInSignOut.class);
+            Intent intent = new Intent(UserTypeActivity.this, SelectionActivity.class);
             intent.putExtra(ConstantClass.EXTRAA_SIGN_IN_OUT, ConstantClass.REQUEST_SIGN_OUT);
             startActivityForResult(intent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
         }

@@ -33,6 +33,8 @@ public class ConstantClass {
     public static final int REQUEST_SIGN_OUT = 10002;
     public static final String EXTRAA_SELECTED_OPTION_TYPE = "EXTRAA_SELECTED_OPTION_TYPE";
 
+    public static final String CLEANER_TYPE = "7";
+    public static final String COVER_GUARD_TYPE = "8";
     public static final String VISITOR_TYPE = "1";
     public static final String CONTRACTOR_TYPE = "4";
     public static final String EXTRAA_USER_TYPE = "EXTRAA_USER_TYPE";

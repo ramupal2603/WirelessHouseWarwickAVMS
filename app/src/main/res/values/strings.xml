@@ -21,7 +21,9 @@
     <string name="last_name">Last Name</string>
     <string name="company_visitor">Company Visitor</string>
     <string name="staff_visitor">Staff Visitor</string>
-    <string name="staff">Staff</string>
+    <string name="staff">Internal Staff</string>
+    <string name="cleaners">Cleaner</string>
+    <string name="cover_guards">Cover Guards</string>
     <string name="vehicle_reg">Vehicle Registration</string>
     <string name="orga_name">Organisation Name</string>
 

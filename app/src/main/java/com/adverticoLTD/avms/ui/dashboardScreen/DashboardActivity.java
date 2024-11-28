@@ -257,7 +257,6 @@ public class DashboardActivity extends BaseActivity {
     @Override
     public void onClick(View view) {
         if (view == loutManualSignIn) {
-
             startActivity(new Intent(DashboardActivity.this,
                     ManualDashboardActivity.class));
             /*//Todo(Ramu):for testing purpose using this to check in jobQueue
