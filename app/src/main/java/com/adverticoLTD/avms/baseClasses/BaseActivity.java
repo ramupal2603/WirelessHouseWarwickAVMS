@@ -122,7 +122,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
-    public String gdprMessage = "<p><b>WELCOME TO WIRELESS HOUSE WARWICK</b></p>\n" +
+    public String gdprMessage = "<p><b>WELCOME TO WIRELESS HOUSE</b></p>\n" +
             "<p><br />WHILST ON OUR PREMISES THE FOLLOWING REGULATIONS MUST BE OBSERVED</p>\n" +
             "<p><br />&bull; <b>HEALTH &amp; SAFETY</b><br />All visitors are subject to the Health &amp; Safety at Work Act 1974 and other site regulations</p>\n" +
             "<p>&bull; <b>FIRE &amp; EMERGENCY</b><br />In the case of emergency, all Visitors must accompany their Host and report to Assembly Point.<br />DO NOT USE THE LIFTS.</p>\n" +
