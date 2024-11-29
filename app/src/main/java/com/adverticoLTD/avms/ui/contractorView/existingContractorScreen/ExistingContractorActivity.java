@@ -19,6 +19,9 @@ import com.adverticoLTD.avms.BuildConfig;
 import com.adverticoLTD.avms.MyApplication;
 import com.adverticoLTD.avms.R;
 import com.adverticoLTD.avms.baseClasses.BaseActivity;
+import com.adverticoLTD.avms.data.contractorStatus.ContractorRequestModel;
+import com.adverticoLTD.avms.data.contractorStatus.ContractorRequestParamModel;
+import com.adverticoLTD.avms.data.contractorStatus.ContractorResponseModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorRequestParamModel;
 import com.adverticoLTD.avms.data.existingContractor.ExistingContractorResponseModel;
@@ -30,6 +33,7 @@ import com.adverticoLTD.avms.jobQueue.PrintBadgeJob;
 import com.adverticoLTD.avms.network.RetrofitClient;
 import com.adverticoLTD.avms.network.RetrofitInterface;
 import com.adverticoLTD.avms.ui.Utils;
+import com.adverticoLTD.avms.ui.contractorView.newContractorScreen.WebViewPDFActivity;
 import com.adverticoLTD.avms.ui.thankYouSceen.ThankYouScreen;
 import com.pixplicity.easyprefs.library.Prefs;
 
@@ -111,15 +115,85 @@ public class ExistingContractorActivity extends BaseActivity {
         if (StringUtils.checkEmptyEditText(edtContractorId)) {
             showAlertDialog(getContext(), getResources().getString(R.string.error_contractor_id));
         } else {
-            siginInExistingContractorWithID();
+            contractorStatus(edtContractorId.getText().toString().trim());
         }
     }
 
-    private void siginInExistingContractorWithID() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ConstantClass.REQUEST_NORMAL_CONTRACTOR && resultCode == RESULT_OK) {
+            if (data != null) {
+                String descriptionOfWork = data.getStringExtra(ConstantClass.EXTRAA_DESCRIPTION_WORK);
+                String imagePath = data.getStringExtra(ConstantClass.EXTRAA_SIGNATURE);
+                siginInExistingContractorWithID(descriptionOfWork, imagePath);
+            }
+        }
+    }
+
+    private void contractorStatus(String userID) {
+
+        showProgressBar();
+
+        RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
+        apiService.getContractorStatus(getcontractorStatus(userID),
+                Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""), DateTimeUtils.getCurrentDateHeader()).enqueue(new Callback<ContractorResponseModel>() {
+            @Override
+            public void onResponse(Call<ContractorResponseModel> call, Response<ContractorResponseModel> response) {
+                if (response.isSuccessful()) {
+                    ContractorResponseModel responseModel = response.body();
+                    if (responseModel != null) {
+                        if (responseModel.getStatus().equals("1")) {
+                            // Call for SignOut
+                            showAlertDialog(getContext(), getResources().getString(R.string.error_already_signed_in_contractor));
+
+                        } else if (responseModel.getStatus().equals("0")) {
+
+                            // Call for SignIn
+                            Intent contractorIntent = new Intent(ExistingContractorActivity.this, WebViewPDFActivity.class);
+                            contractorIntent.putExtra(ConstantClass.EXTRAA_VIEW_USER_NAME, responseModel.getContractor_name());
+                            startActivityForResult(contractorIntent, ConstantClass.REQUEST_NORMAL_CONTRACTOR);
+
+                        } else {
+                            showToastMessage(getString(R.string.error_something_went_wrong));
+                        }
+
+
+                    }
+                } else if (response.code() == ConstantClass.RESPONSE_UNAUTHORIZED) {
+                    getAccessKeyToken();
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    contractorStatus(userID);
+
+                }
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(Call<ContractorResponseModel> call, Throwable t) {
+                t.printStackTrace();
+                hideProgressBar();
+            }
+        });
+    }
+
+    private ContractorRequestModel getcontractorStatus(String userID) {
+        ContractorRequestModel requestModel = new ContractorRequestModel();
+        ContractorRequestParamModel paramModel = new ContractorRequestParamModel();
+        paramModel.setUser_id(userID + "@4");
+        requestModel.setParam(paramModel);
+        return requestModel;
+    }
+
+    private void siginInExistingContractorWithID(String descriptionOfWork, String imagePath) {
         showProgressBar();
         RetrofitInterface apiService = RetrofitClient.getRetrofit().create(RetrofitInterface.class);
         apiService.existingContractorSignIn(Prefs.getString(PreferenceKeys.PREF_ACCESS_TOKEN, ""),
-                DateTimeUtils.getCurrentDateHeader(), getExistingContractorRequest()).enqueue(new Callback<ExistingContractorResponseModel>() {
+                DateTimeUtils.getCurrentDateHeader(), getExistingContractorRequest(descriptionOfWork, imagePath)).enqueue(new Callback<ExistingContractorResponseModel>() {
             @Override
             public void onResponse(Call<ExistingContractorResponseModel> call, Response<ExistingContractorResponseModel> response) {
                 if (response.isSuccessful()) {
@@ -161,7 +235,7 @@ public class ExistingContractorActivity extends BaseActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    siginInExistingContractorWithID();
+                    siginInExistingContractorWithID(descriptionOfWork, imagePath);
 
                 }
                 hideProgressBar();
@@ -176,10 +250,12 @@ public class ExistingContractorActivity extends BaseActivity {
         });
     }
 
-    private ExistingContractorRequestModel getExistingContractorRequest() {
+    private ExistingContractorRequestModel getExistingContractorRequest(String descriptionOfWork, String imagePath) {
         ExistingContractorRequestModel requestModel = new ExistingContractorRequestModel();
         ExistingContractorRequestParamModel paramModel = new ExistingContractorRequestParamModel();
         paramModel.setVisitor_id(edtContractorId.getText().toString().trim());
+        paramModel.setDescription(descriptionOfWork);
+        paramModel.setSignature(imagePath);
         requestModel.setParam(paramModel);
         return requestModel;
     }

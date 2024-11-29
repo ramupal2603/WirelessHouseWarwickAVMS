@@ -18,6 +18,7 @@ public class WebApiHelper {
     public static final String GET_SITE_LIST = "getSitelist";
     public static final String getSignedStaffList = "getSignedstafflist";
     public static final String insertPatientVisitor = "insertPatientvisitor";
+    public static final String getContractorStatus = "getContractorStatus";
 
     // Device Type
     public static final String DEVICE_TYPE_TAB = "1";

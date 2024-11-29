@@ -3,6 +3,8 @@ package com.adverticoLTD.avms.network;
 
 import com.adverticoLTD.avms.data.acesstoken.AccessTokenResponseModel;
 import com.adverticoLTD.avms.data.companies.CompanyListResponseModel;
+import com.adverticoLTD.avms.data.contractorStatus.ContractorRequestModel;
+import com.adverticoLTD.avms.data.contractorStatus.ContractorResponseModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryListingResponseModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryRequestModel;
 import com.adverticoLTD.avms.data.delivery.DeliveryResponseModel;
@@ -109,6 +111,9 @@ public interface RetrofitInterface {
     Call<PatientVisitorResponseModel> insertPatientVisitor(@Header("Accesskey") String basicToken,
                                                            @Header("Accesskeydate") String dateTime,
                                                            @Body PatientVisitorRequestModel requestModel);
-
+    @POST(WebApiHelper.getContractorStatus)
+    Call<ContractorResponseModel> getContractorStatus(@Body ContractorRequestModel requestModel,
+                                                      @Header("Accesskey") String basicToken,
+                                                      @Header("Accesskeydate") String dateTime);
 
 }
